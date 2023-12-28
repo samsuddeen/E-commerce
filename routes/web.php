@@ -16,5 +16,8 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' =>'admin'], function () {
-   Route::view('dashboard','backend.dashboard.index');
+   Route::view('dashboard','backend.dashboard.index')->name('dashboard');
+   Route::view('login','backend.dashboard.login');
+   Route::post('submit','LoginController@login')->name('admin.login.submit');
+
 });
