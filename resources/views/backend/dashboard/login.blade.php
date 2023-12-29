@@ -13,14 +13,7 @@
 </head>
 
 <body>
-@if(Session::has('message'))
-<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-@endif
-@if ($errors->any())
-     @foreach ($errors->all() as $error)
-         <div>{{$error}}</div>
-     @endforeach
- @endif
+
 
 <form action='{{ route("admin.login.submit")}}' method='POST'>
     @csrf
@@ -34,14 +27,23 @@
                         <div class="login-box">
                             <h5>Welcome Back!</h5>
 
+                            
                             <div class="login-row row no-margin">
                                 <label for=""><i class="fas fa-envelope"></i> Email Address</label>
                                 <input type="text" class="form-control form-control-sm" name='email'>
+                                @if($errors->first('email'))
+                                <span style='color:red;'>{{$errors->first('email')}}</span>
+                                @endif
                             </div>
 
                              <div class="login-row row no-margin">
                                 <label for=""><i class="fas fa-unlock-alt"></i> Password</label>
                                 <input type="password" class="form-control form-control-sm" name='password'>
+                                @if($errors->first('password'))
+                                <span style='color:red;'>{{$errors->first('password')}}</span>
+                                @endif
+
+                                
                             </div>
 
                         
