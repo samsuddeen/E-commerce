@@ -20,12 +20,24 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              <a class="nav-link" href="{{ route('system-setting.index') }}">
+                <span class="menu-title">System Setting</span>
+                
               </a>
-             
-          </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('category.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" #" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Product</p>
+                </a>
+</li>
+        </ul>
         </nav>
