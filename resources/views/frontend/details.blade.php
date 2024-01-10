@@ -414,7 +414,7 @@
                            <a href="" class="option1">
                               Add To Cart
                            </a>
-                           <a href="#"  class="option2">
+                           <a href="{{ route('product.details', $product->id)}}" target='_blank' class="option2">
                               Buy Now
                            </a>
                         </div>
@@ -451,10 +451,10 @@
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="{{ route('product.details', $product->id)}}" target='_blank'>
                            Add To Cart
                            </a>
-                           <a href="" class="option2">
+                           <a href="{{ route('product.details', $product->id)}}" target='_blank'>
                            Buy Now
                            </a>
                         </div>
@@ -471,7 +471,257 @@
                         </h6>
                      </div>
                   </div>
-               </div>             
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="{{ route('product.details', $product->id)}}" target='_blank' class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p3.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $68
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="{{ route('product.details', $product->id)}}" target='_blank' class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p4.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $70
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p5.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $75
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p6.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $58
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p7.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $80
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p8.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Men's Shirt
+                        </h5>
+                        <h6>
+                           $65
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p9.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Men's Shirt
+                        </h5>
+                        <h6>
+                           $65
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p10.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Men's Shirt
+                        </h5>
+                        <h6>
+                           $65
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p11.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Men's Shirt
+                        </h5>
+                        <h6>
+                           $65
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p12.png') }}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Women's Dress
+                        </h5>
+                        <h6>
+                           $65
+                        </h6>
+                     </div>
+                  </div>
+               </div>
             </div>
             <div class="btn-box">
                <a href="">

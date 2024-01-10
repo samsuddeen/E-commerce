@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
+    
   </head>
   <body>
    
@@ -28,8 +29,10 @@
       @yield('content')
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
+</div>
+
          @include('backend.dashboard.common.footer')
-          
+</div>
         </div>
     </div>
     

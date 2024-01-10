@@ -13,11 +13,11 @@
                            
                         </div>
                         <div class="body">
-                        <form action="{{route('product.data')}}" method='POST'  enctype='multipart/form-data'>
+                        <form action="{{route('product.update',$cat_data->id)}}" method='POST'  enctype='multipart/form-data'>
                             @csrf
-                                <label >category</label>
+                            <label >category</label>
                                 <div class="form-group">
-                                <select  name="category_id"> 
+                                <select  name="category_id" value="{{$cat_data->category_id ?? ''}}"> 
                                 @forelse($categories as $category)
                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
                                     @empty
@@ -30,7 +30,7 @@
                                     <label >Name</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                        <input type="text" name="name" class="form-control" placeholder="Enter Name"  value="{{$cat_data->name ?? ''}}">
                                     </div>
 
                                 </div>
@@ -39,7 +39,7 @@
                                 <label >price</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="price" class="form-control" placeholder="Enter price">
+                                        <input type="text" name="price" class="form-control" placeholder="Enter price"  value="{{$cat_data->price ?? ''}}">
                                     </div>
 <br>
 
@@ -47,13 +47,13 @@
                                     <label >Image</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="file" name="image" class="form-control" placeholder="Image">
+                                        <input type="file" name="image" class="form-control" placeholder="Image"  value="{{$cat_data->image ?? ''}}">
                                     </div>
                                 </div>
                   <br>
                                 <div class="form-group">
                                 <label for="password">Status</label>
-                                <select name ='status'> 
+                                <select value="{{$cat_data->status ?? ''}}" name ='status'> 
                                         <option  value='1' > Active</option>
                                         <option  value='0'> Inactive</option>
                                     </select >
@@ -62,11 +62,11 @@
                                 <label >Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                    <textarea class="form-control" id="exampleTextarea1" placeholder="Description" rows="8" name="description"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea1" placeholder="Description" rows="8" name="description"  value="{{$cat_data->description ?? ''}}"></textarea>
                                     </div>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
                             </form>
                         </div>
                     </div>

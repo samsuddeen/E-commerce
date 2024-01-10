@@ -11,23 +11,23 @@
                            
                         </div>
                         <div class="body">
-                        <form action="{{route('category.data')}}" method='POST' >
+                        <form action="{{route('admin.update',$cat_data->id)}}" method='POST' >
                             @csrf
                                 <label for="email_address">Category Name</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="catename" class="form-control" placeholder="Enter Category">
+                                        <input type="text" name="catename" class="form-control" placeholder="Enter Category" value="{{$cat_data->category_name ?? ''}}">
                                     </div>
                                 </div>
-                                <label for="password">Status</label>
+                                <label >Status</label>
                                 <div class="form-group">
-                                <select name ='status'> 
+                                <select name ='status' value="{{$cat_data->status ?? ''}}"> 
                                         <option  value='1' > Active</option>
                                         <option  value='0'> Inactive</option>
                                     </select >
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
                             </form>
                         </div>
                     </div>

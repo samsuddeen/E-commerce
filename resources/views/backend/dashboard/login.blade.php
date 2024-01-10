@@ -2,15 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stylish Bootstrap5 login Page Tempalte  | Smarteyeapps.com</title>
-    <link rel="shortcut icon" href="{{ asset('images/fav.png') }}" type="image/x-icon">
+    <title>Admin login Page</title>
+    <link rel="shortcut icon" href="{{ asset('assetslogin/images/fav.png') }}" type="image/x-icon">
    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('images/fav.jpg') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('assetslogin/images/fav.jpg') }}">
+    <link rel="stylesheet" href="{{ asset('assetslogin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assetslogin/css/style.css') }}" />
 </head>
+
 
 <body>
 

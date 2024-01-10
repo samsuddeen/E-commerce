@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\support\facades\Hash;
 use Illuminate\support\facades\Auth;
 use App\Systemsetting;
+use App\product;
 class LoginController extends Controller
 {
     public function login(Request $request){
