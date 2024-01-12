@@ -26,7 +26,7 @@
          <!-- header section strats -->
         @include('frontend.common.header')
          <!-- end header section -->
-        
+
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -39,19 +39,33 @@
                                 <thead>
                                     <tr>
                                     <th>S.N</th>
-                                    <th> Name </th>                                   
+                                    <th> Name </th>
                                     <th> price </th>
-                                    
                                     <th> Description </th>
-                                    <th> image </th>                                                              
+                                    <th> image </th>
                                     <th> Action </th>
                                     </tr>
                                 </thead>
-                               
-            </div>
-            
-       
-         
+                                <tbody>
+                                @forelse($carts as $cart)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $cart->product->name }}</td>
+                                        <td>{{ $cart->product->price }}</td>
+                                        <td>{{ $cart->product->description }}</td>
+                                        <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
+
+                                    </tr>
+                                @empty
+                                    <tr>Cart Empty</tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+
+                            </div>
+
+
+
       <!-- end client section -->
       <!-- footer start -->
      @include('frontend.common.footer')

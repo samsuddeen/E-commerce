@@ -1,4 +1,6 @@
 <?php
+
+use App\Cart;
 use App\Systemsetting;
 use App\Category;
 use App\product;
@@ -18,6 +20,7 @@ Route::get('/', function () {
     $data['categories'] = category::with('products')->get();
     // dd($data);
     $_SESSION['setting'] = $data['system'];
+    $data['carts'] =  Cart::where('user_id',auth()->user()->id)->get();
     return view('frontend.index', $data);
 })->name('userdashboard')->middleware('auth');
 
@@ -34,7 +37,7 @@ Route::view('login','backend.dashboard.login')->name('login');
 Route::post('submit','LoginController@login')->name('admin.login.submit');
 Route::group(['prefix' =>'admin','middleware'=>'auth'], function () {
     Route::get('dashboard','LoginController@dashboard')->name('dashboard');
-   
+
 
     // Route::get('system-setting','SystemController@index')->name('system.setting');
     Route::resource('system-setting','SystemController');
@@ -82,12 +85,16 @@ Route::group(['prefix' =>'user'], function (){
     Route::view('/registerUser','frontend.login.register')->name('registerUser');
     //Login User
     Route::post('/loggin','usercontroller@signin')->name('user.login');
-    Route::view('/login','frontend.login.login')->name('login');  
+    Route::view('/login','frontend.login.login')->name('login');
     //logout
    Route::get('/loggin','usercontroller@logout')->name('userlogout');
 
 
-   //cart 
+   //cart
    Route::get('/show_cart','CartController@show_cart')->name('show_cart');
 
 });
+
+// routes/web.php or routes/api.php
+
+Route::post('/add-to-cart', 'CartController@addToCart')->name('cart.add');
