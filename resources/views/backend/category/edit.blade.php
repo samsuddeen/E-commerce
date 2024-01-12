@@ -1,6 +1,9 @@
 @extends('backend.dashboard.layouts.master')
 @section('title','Category')
 @section('content')
+
+<div class= "main-panel">
+<div class= "content-wrapper">
 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -32,5 +35,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             @endsection

@@ -3,6 +3,8 @@
 @section('title','System setting')
 @section('content')
 
+<div class= "main-panel">
+<div class= "content-wrapper">
 <form action='{{ route("system-setting.store")}}' method='POST' enctype='multipart/form-data'>
     @csrf
     
@@ -78,6 +80,8 @@
               
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                </div>
                 </div>
               </form>
 

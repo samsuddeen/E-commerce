@@ -2,7 +2,8 @@
 @section('title','Category')
 @section('content')
 
-
+<div class= "main-panel">
+<div class= "content-wrapper">
 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -19,7 +20,9 @@
                                 <div class="form-group">
                                 <select  name="category_id" value="{{$cat_data->category_id ?? ''}}"> 
                                 @forelse($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                    <option value="{{$category->id}}">{{ $cat_data->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->category_name }}
+                                    </option>
                                     @empty
                                     <option value="">No Category</option>
                                     @endforelse
@@ -71,5 +74,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             @endsection
