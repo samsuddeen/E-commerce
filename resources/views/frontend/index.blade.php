@@ -46,7 +46,7 @@
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                 𝓡𝓮𝓿𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓲𝔃𝓮 𝔂𝓸𝓾𝓻 𝓼𝓱𝓸𝓹𝓹𝓲𝓷𝓰 𝓮𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝔀𝓲𝓽𝓱 𝓸𝓾𝓻 𝓮𝔁𝓬𝓵𝓾𝓼𝓲𝓿𝓮 𝓮𝓒𝓸𝓶𝓶𝓮𝓻𝓬𝓮 𝓼𝓵𝓲𝓭𝓮𝓻, 𝔀𝓱𝓮𝓻𝓮 𝓼𝓽𝔂𝓵𝓮 𝓶𝓮𝓮𝓽𝓼 𝓼𝓪𝓿𝓲𝓷𝓰𝓼. 𝓤𝓷𝓬𝓸𝓿𝓮𝓻 𝓽𝓱𝓮 𝓵𝓪𝓽𝓮𝓼𝓽 𝓽𝓻𝓮𝓷𝓭𝓼 𝓪𝓷𝓭 𝓯𝓪𝓼𝓱𝓲𝓸𝓷-𝓯𝓸𝓻𝔀𝓪𝓻𝓭 𝓯𝓲𝓷𝓭𝓼 𝓽𝓱𝓪𝓽 𝔀𝓲𝓵𝓵 𝓮𝓵𝓮𝓿𝓪𝓽𝓮 𝔂𝓸𝓾𝓻 𝔀𝓪𝓻𝓭𝓻𝓸𝓫𝓮 𝓽𝓸 𝓷𝓮𝔀 𝓱𝓮𝓲𝓰𝓱𝓽𝓼. 
                                  </p>
                                  <div class="btn-box">
                                     <a href="" class="btn1">
@@ -412,15 +412,15 @@
                      <div class="option_container">
                         <div class="options">
                            <a href="" class="option1">
-                              Add To Cart
-                           </a>
-                           <a href="#"  class="option2">
                               Buy Now
+                           </a>
+                           <a href="{{ route('product.details', $product->id)}}"  class="option2">
+                              Product Detail
                            </a>
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="{{ asset('images/p1.png')}}" alt="">
+                        <img src="{{$product->image}}" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
@@ -473,7 +473,7 @@
                   </div>
                </div>             
             </div>
-            <div class="btn-box">
+            <div>
                <a href="">
                View All products
                </a>

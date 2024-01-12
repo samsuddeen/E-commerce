@@ -19,14 +19,17 @@ Route::get('/', function () {
     // dd($data);
     $_SESSION['setting'] = $data['system'];
     return view('frontend.index', $data);
-});
+})->name('userdashboard')->middleware('auth');
+
+
+//User Login
+//Route::view('/loginUser','frontend.login.login')->name('loginUser');
+//Route::view('/registerUser','frontend.login.register')->name('registerUser');
 
 
 
 
-
-
-
+//Admin Login
 Route::view('login','backend.dashboard.login')->name('login');
 Route::post('submit','LoginController@login')->name('admin.login.submit');
 Route::group(['prefix' =>'admin','middleware'=>'auth'], function () {
@@ -71,3 +74,20 @@ Route::group(['prefix' =>'admin','middleware'=>'auth'], function () {
 
 });
 
+
+
+Route::group(['prefix' =>'user'], function (){
+    //Register User
+    Route::post('/registerUser','usercontroller@signup')->name('user.register');
+    Route::view('/registerUser','frontend.login.register')->name('registerUser');
+    //Login User
+    Route::post('/loggin','usercontroller@signin')->name('user.login');
+    Route::view('/login','frontend.login.login')->name('login');  
+    //logout
+   Route::get('/loggin','usercontroller@logout')->name('userlogout');
+
+
+   //cart 
+   Route::get('/show_cart','CartController@show_cart')->name('show_cart');
+
+});

@@ -2,6 +2,8 @@
 @section('title','Category')
 @section('content')
 
+<div class= "main-panel">
+<div class= "content-wrapper">
 
 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -15,7 +17,7 @@
                         <div class="body">
                         <form action="{{route('product.data')}}" method='POST'  enctype='multipart/form-data'>
                             @csrf
-                                <label >category</label>
+                                <label>category</label>
                                 <div class="form-group">
                                 <select  name="category_id"> 
                                 @forelse($categories as $category)
@@ -27,7 +29,7 @@
                                     <br>
                                     <br>
 
-                                    <label >Name</label>
+                                    <label>Name</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" name="name" class="form-control" placeholder="Enter Name">
@@ -36,7 +38,7 @@
                                 </div>
                                 <br>
 
-                                <label >price</label>
+                                <label>price</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" name="price" class="form-control" placeholder="Enter price">
@@ -44,7 +46,7 @@
 <br>
 
                                
-                                    <label >Image</label>
+                                    <label>Image</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" name="image" class="form-control" placeholder="Image">
@@ -59,7 +61,7 @@
                                     </select >
                                 </div>
 <br>
-                                <label >Description</label>
+                                <label>Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                     <textarea class="form-control" id="exampleTextarea1" placeholder="Description" rows="8" name="description"></textarea>
@@ -71,5 +73,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             @endsection

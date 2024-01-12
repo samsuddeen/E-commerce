@@ -7,9 +7,9 @@
                         <a href="{{ url('/')}}"><img width="210" src="{{ asset('images/logofront.png')}}" alt="#" /></a>
                       </div>
                       <div class="information_f">
-                        <p><strong>ADDRESS:</strong>  {{ $_SESSION['setting']->name ? $_SESSION['setting']->address :'' }}</p>
-                        <p><strong>TELEPHONE:</strong> {{ $_SESSION['setting']->name ? $_SESSION['setting']->phone :'' }}</p>
-                        <p><strong>EMAIL:</strong>{{ $_SESSION['setting']->name ? $_SESSION['setting']->email :'' }}</p>
+                        <p><strong>ADDRESS:</strong>  {{ $_SESSION['setting']->address ? $_SESSION['setting']->address :'' }}</p>
+                        <p><strong>TELEPHONE:</strong> {{ $_SESSION['setting']->phone ? $_SESSION['setting']->phone :'' }}</p>
+                        <p><strong>EMAIL:</strong>{{ $_SESSION['setting']->email ? $_SESSION['setting']->email :'' }}</p>
                       </div>
                    </div>
                </div>

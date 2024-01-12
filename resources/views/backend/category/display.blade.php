@@ -2,7 +2,8 @@
 @section('title','Category Settings')
 @section('content')
 
-<hr>
+<div class= "main-panel">
+<div class= "content-wrapper">
 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -44,5 +45,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             @endsection

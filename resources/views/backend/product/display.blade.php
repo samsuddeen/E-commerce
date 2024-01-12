@@ -1,6 +1,9 @@
 @extends('backend.dashboard.layouts.master')
-@section('title','Category')
+@section('title','product')
 @section('content')
+
+<div class= "main-panel">
+<div class= "content-wrapper">
 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -14,12 +17,13 @@
                                 <thead>
                                     <tr>
                                     <th>S.N</th>
-                                    <th>Category_id </th>
+                                    <th> Category </th>
+                                  
                                     <th> Name </th>                                   
                                     <th> price </th>
                                     <th> Status </th>
-                                    <th> image </th>
-                                    <th> Description </th>                           
+                                    <th> Description </th>
+                                    <th> image </th>                                                              
                                     <th> Action </th>
                                     </tr>
                                 </thead>
@@ -31,8 +35,8 @@
                             <td>{{$product->name}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->status}}</td>
-                            <td>{{$product->image}}</td>
                             <td>{{$product->description}}</td>
+
                             <td><img src="{{$product->image}}" heigth="160px" width="160px"></td>
                            
                             <td><a href="{{route('delete.product',$product->id)}}" class='btn btn-danger'>Delete</a>
@@ -52,5 +56,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             @endsection

@@ -54,8 +54,11 @@ public function displayData(){
            return redirect()->back();
        }
        $cat_data= product::find($id);
+       $categories = Category::all();
       if($cat_data){
-       return view('backend.product.edit',compact('cat_data'));
+
+    return view('backend.product.edit', compact('cat_data', 'categories'));
+
       }
       return redirect()->back();
       }
@@ -117,7 +120,9 @@ public function deleteproduct($id){
     if(!$id){
       return redirect()->back();
     }
-    $product = Product::find($id);
+    $product = product::find($id);
+    $data['system'] = Systemsetting::find(1);
+    $_SESSION['setting'] = $data['system'];
     if($product){
       return view('frontend.details', compact('product'));
     }
