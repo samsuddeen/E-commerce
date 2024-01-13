@@ -32,40 +32,32 @@
 </div>
          <!-- end header section -->
         
-        
-                    <div class="review">
-                        <table>
-                            <tr>
-                                <th>S.N</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>description</th>
-                                <th>Action</th>
-
-
-
-
-                    
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>shirt</td>
-                                <td>200</td>
-                                <td>expensive</td>
-                                <td>Remove</td>
-
-                            </tr>
-                        </table>
-                    </div>
-                           
-
-                           
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Add to Cart
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <table id="mainTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                    <th>S.N</th>
+                                    <th> Name </th>                                   
+                                    <th> price </th>
+                                    
+                                    <th> Description </th>
+                                    <th> image </th>                                                              
+                                    <th> Action </th>
+                                    </tr>
+                                </thead>
                                
-            
+            </div>
             
        
          
-      
+      <!-- end client section -->
       <!-- footer start -->
      @include('frontend.common.footer')
       <!-- footer end -->

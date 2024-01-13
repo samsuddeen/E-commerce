@@ -27,9 +27,9 @@
         @include('frontend.common.header')
          <!-- end header section -->
         
-         <form action="{{route('product.mail',$product->id)}}" method="post">
-            @csrf
+
          <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px">
+                
                      <div class="img-box">
                         <img src="{{$product->image}}" alt="">
                      </div>
@@ -44,14 +44,11 @@
                            {{ $product->price }}
                         </h6>
                         <h6>Product Details :{{ $product->description }}</h6><br>
-                       <a href="{{ route('show_cart')}}" class="btn btn-primary">Add To Cart </a>
-                       <a  class="btn "><input class="btn btn-primary " type='submit' value='Buy Now'> </a>
-                       
-                       
+                       <a href="{{ route('show_cart')}}" class="btn btn-primary">Add To Cart</a>
+                       <a href="" class="btn btn-warning">Buy Now</a>
                      </div>
                   </div>
                </div>
-               </form>
          
       <!-- end client section -->
       <!-- footer start -->

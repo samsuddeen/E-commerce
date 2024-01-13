@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
@@ -29,7 +30,7 @@ class ProductController extends Controller
         'status'=> $request->status,
         'image'=>$image_url,
         'category_id'=>$request->category_id
-        
+
    ];
 
    product::insert($data);
@@ -106,12 +107,12 @@ public function deleteproduct($id){
        ];
        $cat_data->update($data);
       return redirect()->route('display.product');
-        
+
        }
        return redirect()->back();
     }
 
-  
+
     public function index(){
         $data['categories'] = Category::where('status',1)->get();
         return view('backend.product.create', $data);
@@ -121,13 +122,14 @@ public function deleteproduct($id){
     if(!$id){
       return redirect()->back();
     }
-    $product = product::find($id);
+    $data['product'] = product::find($id);
     $data['system'] = Systemsetting::find(1);
+    $data['carts'] =  Cart::where('user_id',auth()->user()->id)->get();
     $_SESSION['setting'] = $data['system'];
-    if($product){
-      return view('frontend.details', compact('product'));
+    if($data['product']){
+      return view('frontend.details', $data);
     }
-    if(!$id){ 
+    if(!$id){
       session()->flash('error','product not found!');
       return redirect()->back();
     }
