@@ -88,6 +88,9 @@ Route::group(['prefix' =>'user'], function (){
 
 
    //cart 
+   Route::post('/add_cart/{id}','ProductController@add_cart')->name('add_cart');
    Route::get('/show_cart','CartController@show_cart')->name('show_cart');
-
+    
+   //mail
+    Route::post('product-usermails/{id}','mailcontroller@usermails')->name('product.mail');
 });

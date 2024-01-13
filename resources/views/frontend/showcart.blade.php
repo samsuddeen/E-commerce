@@ -20,45 +20,59 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-   </head>
+  
+  
+  
+  
+    </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
         @include('frontend.common.header')
+</div>
          <!-- end header section -->
         
-         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Add to Cart
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <table id="mainTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                    <th>S.N</th>
-                                    <th> Name </th>                                   
-                                    <th> price </th>
-                                    
-                                    <th> Description </th>
-                                    <th> image </th>                                                              
-                                    <th> Action </th>
-                                    </tr>
-                                </thead>
+        
+                    <div class="review">
+                        <table>
+                            <tr>
+                                <th>S.N</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>description</th>
+                                <th>Action</th>
+
+
+
+
+                    
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>shirt</td>
+                                <td>200</td>
+                                <td>expensive</td>
+                                <td>Remove</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                           
+
+                           
                                
-            </div>
+            
             
        
          
-      <!-- end client section -->
+      
       <!-- footer start -->
      @include('frontend.common.footer')
       <!-- footer end -->
       <div class="cpy_">
          <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
       </div>
+
       <!-- jQery -->
       <script src="{{ asset('js/jquery-3.4.1.min.js')}}"></script>
       <!-- popper js -->

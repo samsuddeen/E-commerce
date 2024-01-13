@@ -29,7 +29,7 @@ class OrderMail extends Mailable
      * @return $this
      */
     public function build()
-    {
+    {      
           $order = $this->order;
         return $this->view('orderEmail', compact('order'))->subject('Order Details from E-commerce');
     }

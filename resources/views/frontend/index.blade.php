@@ -411,14 +411,16 @@
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
-                              Buy Now
+                           <a href="{{ route('product.details', $product->id)}}" class="option1">
+                           Product Detail
                            </a>
-                           <a href="{{ route('product.details', $product->id)}}"  class="option2">
-                              Product Detail
+                          
+                           <a href="#"  class="option2">
+                              Add To Cart
                            </a>
                         </div>
                      </div>
+
                      <div class="img-box">
                         <img src="{{$product->image}}" alt="">
                      </div>

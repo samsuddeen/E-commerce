@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Category;
 use App\Order;
@@ -129,6 +130,17 @@ public function deleteproduct($id){
     if(!$id){ 
       session()->flash('error','product not found!');
       return redirect()->back();
+    }
+
+  }
+  public function add_cart($id)
+  {
+    if(Auth::id())
+    {
+      return redirect()->back();
+    }
+    else {
+      return redirect('login');
     }
 
   }
