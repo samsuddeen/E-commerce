@@ -20,51 +20,34 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-      <style>
-    
-    
-    .search-container input[type=text] {
-      padding: 3px;
-      margin-top: 8px;
-      font-size: 15px;
-      border: none;
-    }
-
-    .search-container button {
-      padding: 6px 10px;
-      margin-top: 8px;
-      margin-right: 16px;
-   
-    }
-
-
- </style>
-</head>
-
-   
+   </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
         @include('frontend.common.header')
          <!-- end header section -->
-         <div class="navbar">
-    <div class="search-container">
-         <form action="{{route('posts.search') }}" method="GET">
-            @csrf
-         <div class="main">
-                     <!-- Another variation with a button -->
-                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search your product">
-                        <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
-                           </button>
+         
+          <!-- Modal Search Start -->
+        <form action="{{ route('posts.search') }}" method="GET">
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                            <button type="submit" >Search</button>
                         </div>
-                     </div>
-                  </div>
-                  </div>
-                  </div>
-</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+         
          
          <!-- slider section -->
          <section class="slider_section ">
@@ -160,8 +143,6 @@
          </section>
          <!-- end slider section -->
       </div>
-
-      
       <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">

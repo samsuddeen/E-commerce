@@ -54,6 +54,25 @@
                                 </thead>
                                
             </div>
+            <tbody>
+                                @forelse($carts as $cart)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $cart->product->name }}</td>
+                                        <td>{{ $cart->product->price }}</td>
+                                        <td>{{ $cart->product->description }}</td>
+                                        <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
+                                      <td>  <a class="btn btn-danger">Remove</a></td>
+                                    
+
+                                    </tr>
+                                @empty
+                                    <tr>Cart Empty</tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+
+                            </div>
             
        
          

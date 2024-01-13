@@ -95,8 +95,12 @@ Route::group(['prefix' =>'user'], function (){
     
    //mail
     Route::post('product-usermails/{id}','mailcontroller@usermails')->name('product.mail');
-});
+
+   //Search
+    Route::get('/posts/search', 'ProductController@search')->name('posts.search');
 
 // routes/web.php or routes/api.php
 
 Route::post('/add-to-cart', 'CartController@addToCart')->name('cart.add');
+});
+

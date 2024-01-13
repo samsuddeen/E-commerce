@@ -135,15 +135,23 @@ public function deleteproduct($id){
     }
 
   }
-  public function add_cart($id)
-  {
-    if(Auth::id())
-    {
-      return redirect()->back();
-    }
-    else {
-      return redirect('login');
-    }
+  public function search(Request $request)
+{
 
+  $searchterm =$request->search;
+  $query=product::query();
+  $data['systemdata'] = system::find(1);
+  $_SESSION['setting'] = $data['systemdata'];
+  
+  if($searchterm){
+    $query->where('name','LIKE','%'.$searchterm.'%')
+            ->orWhere('description','LIKE','%'.$searchterm.'%')
+            ->orWhere('price','LIKE','%'.$searchterm.'%');
+            $data['product']=$query->get();
+            return view('frontend.search',$data);
   }
+  else{
+    return redirect()->back();
+  }
+}
 }
