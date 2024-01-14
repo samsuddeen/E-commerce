@@ -46,4 +46,15 @@ class CartController extends Controller
 
         return view('frontend.showcart',$data);
     }
+    public function removeproduct($id){
+        if(!$id){
+            return redirect()->back();
+        }
+    
+       $cartItem= Cart::find($id);
+       if($cartItem){
+        $cartItem->delete();
+       }
+       return redirect()->back()->with('success', 'Product removed from the cart successfully.');
+       }
 }

@@ -92,6 +92,8 @@ Route::group(['prefix' =>'user'], function (){
 
    //cart
    Route::get('/show_cart','CartController@show_cart')->name('show_cart');
+    //Delete cartItem
+    Route::get('/remove/product/{id}','CartController@removeproduct')->name('remove.product');
 
 });
 
