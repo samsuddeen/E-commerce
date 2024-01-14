@@ -90,13 +90,17 @@ Route::group(['prefix' =>'user'], function (){
    Route::get('/loggin','usercontroller@logout')->name('userlogout');
 
 
-   //cart
+   //cart 
    Route::get('/show_cart','CartController@show_cart')->name('show_cart');
-    //Delete cartItem
-    Route::get('/remove/product/{id}','CartController@removeproduct')->name('remove.product');
+    
+   //mail
+    Route::post('product-usermails/{id}','mailcontroller@usermails')->name('product.mail');
 
-});
+   //Search
+    Route::get('/posts/search', 'ProductController@search')->name('posts.search');
 
 // routes/web.php or routes/api.php
 
 Route::post('/add-to-cart', 'CartController@addToCart')->name('cart.add');
+});
+

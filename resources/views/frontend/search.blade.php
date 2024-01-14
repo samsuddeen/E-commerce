@@ -20,18 +20,35 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-      
-    
-   
-</head>
-
-   
+   </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
         @include('frontend.common.header')
          <!-- end header section -->
-        
+         
+          <!-- Modal Search Start -->
+        <form action="{{ route('posts.search') }}" method="GET">
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                            <button type="submit" >Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+         
+         
          <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
@@ -126,8 +143,6 @@
          </section>
          <!-- end slider section -->
       </div>
-
-      
       <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">
@@ -457,7 +472,38 @@
 
 
 
-               
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="" class="option1">
+                           Add To Cart
+                           </a>
+                           <a href="" class="option2">
+                           Buy Now
+                           </a>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                        <img src="{{ asset('images/p2.png')}}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           Men's Shirt
+                        </h5>
+                        <h6>
+                           $80
+                        </h6>
+                     </div>
+                  </div>
+               </div>             
+            </div>
+            <div>
+               <a href="">
+               View All products
+               </a>
+            </div>
+         </div>
       </section>
       <!-- end product section -->
 

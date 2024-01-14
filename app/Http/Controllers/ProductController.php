@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Category;
 use App\Order;
@@ -134,4 +135,23 @@ public function deleteproduct($id){
     }
 
   }
+  public function search(Request $request)
+{
+
+  $searchterm =$request->search;
+  $query=product::query();
+  $data['systemdata'] = system::find(1);
+  $_SESSION['setting'] = $data['systemdata'];
+  
+  if($searchterm){
+    $query->where('name','LIKE','%'.$searchterm.'%')
+            ->orWhere('description','LIKE','%'.$searchterm.'%')
+            ->orWhere('price','LIKE','%'.$searchterm.'%');
+            $data['product']=$query->get();
+            return view('frontend.search',$data);
+  }
+  else{
+    return redirect()->back();
+  }
+}
 }

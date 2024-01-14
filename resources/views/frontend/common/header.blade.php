@@ -84,10 +84,7 @@
                                  </a>
                              </li>
                        @endif
-                        <form class="form-inline">
-                           <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                           <i class="fa fa-search" aria-hidden="true"></i>
-                           </button>
+                       
 
 
                         @if(!auth()->check())
@@ -107,6 +104,7 @@
                                 Hello, {{ auth()->user()->name }}    <a class="btn btn-success" href="{{ route('registerUser') }}">Logout</a>
                                 </li>
                             @endif
+                           
 
                         </form>
                      </ul>
