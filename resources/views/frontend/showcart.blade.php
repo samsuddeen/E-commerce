@@ -20,13 +20,18 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-   </head>
+  
+  
+  
+  
+    </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
         @include('frontend.common.header')
+</div>
          <!-- end header section -->
-
+        
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -39,14 +44,17 @@
                                 <thead>
                                     <tr>
                                     <th>S.N</th>
-                                    <th> Name </th>
+                                    <th> Name </th>                                   
                                     <th> price </th>
+                                    
                                     <th> Description </th>
-                                    <th> image </th>
+                                    <th> image </th>                                                              
                                     <th> Action </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                               
+            </div>
+            <tbody>
                                 @forelse($carts as $cart)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -54,6 +62,8 @@
                                         <td>{{ $cart->product->price }}</td>
                                         <td>{{ $cart->product->description }}</td>
                                         <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
+                                      <td>  <a class="btn btn-danger">Remove</a></td>
+                                    
 
                                     </tr>
                                 @empty
@@ -63,9 +73,9 @@
                             </table>
 
                             </div>
-
-
-
+            
+       
+         
       <!-- end client section -->
       <!-- footer start -->
      @include('frontend.common.footer')
@@ -73,6 +83,7 @@
       <div class="cpy_">
          <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
       </div>
+
       <!-- jQery -->
       <script src="{{ asset('js/jquery-3.4.1.min.js')}}"></script>
       <!-- popper js -->
