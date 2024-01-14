@@ -20,25 +20,9 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-      <style>
+      
     
-    
-    .search-container input[type=text] {
-      padding: 3px;
-      margin-top: 8px;
-      font-size: 15px;
-      border: none;
-    }
-
-    .search-container button {
-      padding: 6px 10px;
-      margin-top: 8px;
-      margin-right: 16px;
    
-    }
-
-
- </style>
 </head>
 
    
@@ -47,25 +31,7 @@
          <!-- header section strats -->
         @include('frontend.common.header')
          <!-- end header section -->
-         <div class="navbar">
-    <div class="search-container">
-         <form action="{{route('posts.search') }}" method="GET">
-            @csrf
-         <div class="main">
-                     <!-- Another variation with a button -->
-                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search your product">
-                        <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-                  </div>
-                  </div>
-</form>
-         
+        
          <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
