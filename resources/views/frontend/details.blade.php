@@ -28,27 +28,35 @@
          <!-- end header section -->
         
 
-         <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px">
-                
-                     <div class="img-box">
-                        <img src="{{$product->image}}" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           {{ $product->name }}
-                        </h5>
-                        <h6 style="color: red">
-                        Price
-                        <br>
+         <form action="{{ route('cart.add') }}" method="POST">
+    @csrf
+    <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px">
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <div class="img-box">
+            <img src="{{ $product->image }}" alt="">
+        </div>
+        <div class="detail-box">
+            <h5>
+                {{ $product->name }}
+            </h5>
+            <h6 style="color: red">
+                Price
+                <br>
+                {{ $product->price }}
+            </h6>
+            <h6>Product Details :{{ $product->description }}</h6><br>
+            <button type="submit" class="btn btn-primary">Add To Cart</button>
+        </div>
+    </div>
+</form>
 
-                           {{ $product->price }}
-                        </h6>
-                        <h6>Product Details :{{ $product->description }}</h6><br>
-                       <a href="{{ route('show_cart')}}" class="btn btn-primary">Add To Cart</a>
-                       <a href="" class="btn btn-warning">Buy Now</a>
-                     </div>
-                  </div>
-               </div>
+<form action='{{ route("product.mail", $product->id)}}' method='POST'>
+    @csrf
+    <div class="text-center">
+    <button type="submit" class="btn btn-warning">Buy Now</button>
+</div>
+</form>
+
          
       <!-- end client section -->
       <!-- footer start -->

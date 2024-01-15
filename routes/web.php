@@ -79,7 +79,7 @@ Route::group(['prefix' =>'admin','middleware'=>'auth'], function () {
 
 
 
-Route::group(['prefix' =>'user'], function (){
+Route::group(['prefix' => 'user'], function () {
     //Register User
     Route::post('/registerUser','usercontroller@signup')->name('user.register');
     Route::view('/registerUser','frontend.login.register')->name('registerUser');
@@ -98,9 +98,24 @@ Route::group(['prefix' =>'user'], function (){
 
    //Search
     Route::get('/posts/search', 'ProductController@search')->name('posts.search');
+    //remove product
+    Route::get('/deleteproduct/{id}','ProductController@deleteproduct')->name('delete.product');
 
-// routes/web.php or routes/api.php
+    // routes/web.php or routes/api.php
+    Route::post('/add-to-cart', 'CartController@addToCart')->name('cart.add');
 
-Route::post('/add-to-cart', 'CartController@addToCart')->name('cart.add');
+    //remove product
+    Route::get('/remove-product/{id}', 'CartController@removeproduct')->name('remove.product');
+    //cash_order
+    Route::get('/cash_order','CartController@cash_order')->name('cash_order');
+
+    //card_payment
+    Route::get('/stripe/{total}','CartController@stripe')->name('stripe');
+    Route::post('stripe-post/{total}', 'CartController@stripePost')->name('stripe.post');
+
+    //order in dashboard
+    Route::get('/order','ProductController@order')->name('order');
+    Route::get('/delivered/{id}','ProductController@delivered')->name('delivered');
+
 });
 

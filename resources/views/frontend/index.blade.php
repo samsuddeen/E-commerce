@@ -406,6 +406,24 @@
       
       <!-- product section -->
       <section class="product_section layout_padding">
+      <div class="container">
+         <div class="heading_container heading_center">
+               <h2>
+                  Our <span>Products</span>
+                  </h2>
+               </div>
+               </div>
+<br>
+
+<div class="text-center">
+<form action="{{route('posts.search') }}" method="GET">
+      @csrf
+      <input style="width: 500px;"  type="text" name="search" placeholder="Search For Something">
+      <input type="submit" value="Search">
+   </form>
+</div>
+<br>
+<br>
    @forelse($categories as $category)
       <div class="container">
          <div class="heading_container heading_center">

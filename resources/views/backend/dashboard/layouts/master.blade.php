@@ -30,6 +30,10 @@
         @yield('content')
            
           <!-- content-wrapper ends -->
+          <br>
+          <br>
+          <br>
+          <br>
           <!-- partial:partials/_footer.html -->
           @include('backend.dashboard.common.footer')
           <!-- partial -->

@@ -140,18 +140,34 @@ public function deleteproduct($id){
 
   $searchterm =$request->search;
   $query=product::query();
-  $data['systemdata'] = system::find(1);
+  $data['systemdata'] = Systemsetting::find(1);
   $_SESSION['setting'] = $data['systemdata'];
   
   if($searchterm){
     $query->where('name','LIKE','%'.$searchterm.'%')
             ->orWhere('description','LIKE','%'.$searchterm.'%')
             ->orWhere('price','LIKE','%'.$searchterm.'%');
-            $data['product']=$query->get();
+            $data['products']=$query->get();
             return view('frontend.search',$data);
   }
   else{
     return redirect()->back();
   }
+}
+
+public function order()
+{
+  $order= Order::all();
+  return view('backend.dashboard.order', compact('order'));
+}
+
+public function delivered($id)
+{
+  $order=Order::find($id);
+  $order->delivery_status="delivered";
+  $order->payment_status="Paid";
+
+  $order->save();
+  return redirect()->back();
 }
 }

@@ -29,50 +29,72 @@
       <div class="hero_area">
          <!-- header section strats -->
         @include('frontend.common.header')
-</div>
+
          <!-- end header section -->
+
+         @if(session()->has('message'))
+         <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            {{session()->get('message')}}
+</div>
+@endif
+
         
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Add to Cart
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <table id="mainTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                    <th>S.N</th>
-                                    <th> Name </th>                                   
-                                    <th> price </th>
-                                    
-                                    <th> Description </th>
-                                    <th> image </th>                                                              
-                                    <th> Action </th>
-                                    </tr>
-                                </thead>
-                               
-            </div>
-            <tbody>
-                                @forelse($carts as $cart)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $cart->product->name }}</td>
-                                        <td>{{ $cart->product->price }}</td>
-                                        <td>{{ $cart->product->description }}</td>
-                                        <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
-                                      <td>  <a class="btn btn-danger">Remove</a></td>
-                                    
+    <div class="card">
+        <div class="header">
+            <h2>
+                Add to Cart
+            </h2>
+        </div>
+        <div class="body">
+            <table id="mainTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $total = 0; @endphp
+                    @forelse($carts as $cart)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $cart->product->name }}</td>
+                            <td>{{ $cart->product->price }}</td>
+                            <td>{{ $cart->product->description }}</td>
+                            <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
+                            <td><a href="{{ route('remove.product', $cart->product->id) }}" class='btn btn-danger' onclick="return confirm('Are you sure to remove this product?')">Remove</a></td>
+                        </tr>
+                        @php $total = $cart->product->price; @endphp
+                    @empty
+                        <tr><td colspan="6">Cart Empty</td></tr>
+                    @endforelse
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th><strong>TOTAL</strong></th>
+                        <th>{{ $carts->count() }}</th>
+                        <th colspan="4"><h2>Total price : {{ $total }}</h2></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
 
-                                    </tr>
-                                @empty
-                                    <tr>Cart Empty</tr>
-                                @endforelse
-                                </tbody>
-                            </table>
+<br>
+<div class="center" style="text-align: center;">
+    <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed To Order</h1>
+    <a href="{{ route('cash_order')}}" class="btn btn-success">Cash on Delivery</a>
+    <a href="{{ route('stripe', ['total' => $total]) }}" class="btn btn-danger">Pay using Card</a>
 
-                            </div>
+</div>
+
             
        
          

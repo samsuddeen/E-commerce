@@ -17,7 +17,7 @@ class mailcontroller extends Controller
     if(!$id){
       return redirect()->back();
     }
-    $orderNumber = rand(10,9999999999999);
+    
     $product =  product::find($id);
     $data['system'] = Systemsetting::find(1);
       $_SESSION['setting'] = $data['system'];
