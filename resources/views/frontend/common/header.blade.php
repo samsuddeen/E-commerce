@@ -15,16 +15,17 @@
                            <ul class="dropdown-menu">
                               <li><a href="{{ url('/')}}">About</a></li>
                               <li><a href="{{ url('/')}}">Testimonial</a></li>
+                              <li><a href="{{ url('/')}}">Blog</a></li>
                            </ul>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{{ url('/')}}">Products</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/')}}">Blog</a>
+                           <a class="nav-link" href="{{ url('/')}}">Contact</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/')}}">Contact</a>
+                           <a class="nav-link" href="{{ route('show_order')}}">Order</a>
                         </li>
                        @if(auth()->check())
                              <li class="nav-item">

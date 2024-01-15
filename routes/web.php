@@ -117,5 +117,13 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/order','ProductController@order')->name('order');
     Route::get('/delivered/{id}','ProductController@delivered')->name('delivered');
 
+    //show_order
+    Route::get('/show-order','CartController@show_order')->name('show_order');
+    //cancel_order
+    Route::get('/cancel-order/{id}','CartController@cancel_order')->name('cancel_order');
+    //search order
+    Route::get('/search-order','CartController@order_search')->name('order_search');
+
+
 });
 

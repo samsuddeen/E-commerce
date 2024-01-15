@@ -140,4 +140,43 @@ class CartController extends Controller
               
         return back();
     }
-}
+
+    public function show_order()
+    {
+        if(Auth::id())
+        {
+            $data['system'] = Systemsetting::find(1);
+        $_SESSION['setting'] = $data['system'];
+            $user=Auth::user();
+            $userid=$user->id;
+            $order=Order::where('user_id', '=', $userid)->get();
+            return view('frontend.order', compact('order'));
+        }
+        else
+        {
+            return redirect('login');
+        }
+    }
+
+    public function cancel_order($id)
+    {
+        $order=Order::find($id);
+        $order->delivery_status='You cancelled the order';
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function order_search(Request $request)
+    {
+        $searchterm =$request->search;
+        $data['systemdata'] = Systemsetting::find(1);
+  $_SESSION['setting'] = $data['systemdata'];
+  $order=Order::where('user_id','LIKE','%'.$searchterm.'%')
+            ->orWhere('product_id','LIKE','%'.$searchterm.'%')
+            ->orWhere('payment_status','LIKE','%'.$searchterm.'%')->get();
+           
+            return view('backend.dashboard.order',compact('order'));
+  
+  }
+    }
+

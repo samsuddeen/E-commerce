@@ -13,7 +13,17 @@
                                All Order
                             </h2>                          
                         </div>
+                  <div class="text-center">
+                    <form action="{{route('order_search') }}" method="GET">
+                    @csrf
+                   <input style="width: 500px;"  type="text" name="search" placeholder="Search For Something">
+                   <input type="submit" value="Search">
 
+
+    </form>
+</div>
+<br>
+<br>
                         <div class="body">
                             <table id="mainTable" class="table table-striped">
                                 <thead>
