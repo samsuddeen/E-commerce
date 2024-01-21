@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> UserLogin Form</title>
+	<title>User Login Form</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
@@ -13,18 +13,20 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-6 col-md-6 d-none d-md-block image-container"></div>
+			<div class="col-lg-7 col-md-6 img-box">
+				<img src="{{ asset('images/bg.jpg') }}" alt="">
+			</div>
 
-			<div class="col-lg-6 col-md-6 form-container">
+			<div class="col-lg-5 col-md-6 form-container">
 				<div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
 					<div class="logo mb-3">
-						<img src="{{ asset('images/logouser.png') }}" width="150px">
+						<img src="{{ asset('images/logofront.png') }}" width="150px">
 					</div>
 					<div class="heading mb-4">
 						<h4>Login into your account</h4>
 					</div>
 					<form action="{{route('user.login')}}" method="post">
-                    @csrf 
+						@csrf 
 						<div class="form-input">
 							<span><i class="fa fa-envelope"></i></span>
 							<input type="email" placeholder="Email Address" required name="email">
@@ -48,21 +50,24 @@
 							<button type="submit" class="btn">Login</button>
 						</div>
 						<div class="text-center mb-2">
-							<div class="mb-3" style="color: #777">or login with</div>
-
-							<a href="" class="btn btn-social btn-facebook">facebook</a>
-
-							<a href="" class="btn btn-social btn-google">google</a>
-
-							<a href="" class="btn btn-social btn-twitter">twitter</a>
-						</div>
-						<div style="color: #777">Don't have an account
-							<a href="{{ route('registerUser') }}" class="register-link">Register here</a>
+							<div style="color: #777">Don't have an account
+								<a href="{{ route('registerUser') }}" class="register-link">Register here</a>
+							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<style>
+        .img-box {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+
 </body>
 </html>

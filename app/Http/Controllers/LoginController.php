@@ -36,9 +36,13 @@ class LoginController extends Controller
     }
 
                    public function dashboard(){
+
+                    
                     $system_setting = Systemsetting::find(1);
                     $_SESSION['setting'] = $system_setting;
 
+                   
+               
                     $total_product=product::all()->count();
                     $total_category=category::all()->count();
                     $total_order=Order::all()->count();
@@ -50,5 +54,8 @@ class LoginController extends Controller
                     $total_processing=Order::where('delivery_status', '=', 'processing')->get()->count();
                     
                     return view('backend.dashboard.index', compact('system_setting', 'total_product', 'total_category', 'total_order', 'total_user', 'total_delivered', 'total_processing'));
-                }
+                    
+    
             }
+        }
+    

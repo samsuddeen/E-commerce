@@ -20,6 +20,7 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       
     
    
@@ -55,7 +56,7 @@
                                  𝓡𝓮𝓿𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓲𝔃𝓮 𝔂𝓸𝓾𝓻 𝓼𝓱𝓸𝓹𝓹𝓲𝓷𝓰 𝓮𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝔀𝓲𝓽𝓱 𝓸𝓾𝓻 𝓮𝔁𝓬𝓵𝓾𝓼𝓲𝓿𝓮 𝓮𝓒𝓸𝓶𝓶𝓮𝓻𝓬𝓮 𝓼𝓵𝓲𝓭𝓮𝓻, 𝔀𝓱𝓮𝓻𝓮 𝓼𝓽𝔂𝓵𝓮 𝓶𝓮𝓮𝓽𝓼 𝓼𝓪𝓿𝓲𝓷𝓰𝓼. 𝓤𝓷𝓬𝓸𝓿𝓮𝓻 𝓽𝓱𝓮 𝓵𝓪𝓽𝓮𝓼𝓽 𝓽𝓻𝓮𝓷𝓭𝓼 𝓪𝓷𝓭 𝓯𝓪𝓼𝓱𝓲𝓸𝓷-𝓯𝓸𝓻𝔀𝓪𝓻𝓭 𝓯𝓲𝓷𝓭𝓼 𝓽𝓱𝓪𝓽 𝔀𝓲𝓵𝓵 𝓮𝓵𝓮𝓿𝓪𝓽𝓮 𝔂𝓸𝓾𝓻 𝔀𝓪𝓻𝓭𝓻𝓸𝓫𝓮 𝓽𝓸 𝓷𝓮𝔀 𝓱𝓮𝓲𝓰𝓱𝓽𝓼. 
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{{ route('login') }}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -440,10 +441,7 @@
                            <a href="{{ route('product.details', $product->id)}}" class="option1">
                            Product Detail
                            </a>
-                          
-                           <a href=""  class="option2">
-                              Add To Cart
-                           </a>
+
                         </div>
                      </div>
 
@@ -455,7 +453,7 @@
                            {{ $product->name }}
                         </h5>
                         <h6>
-                           {{ $product->price }}
+                           ${{ $product->price }}
                         </h6>
                      </div>
                   </div>
@@ -470,14 +468,71 @@
       
    @endforelse
 
-
-
-
-
-
-               
+     
       </section>
       <!-- end product section -->
+
+      <!-- Comment and reply system starts here -->
+
+      <div style="text-align: center; padding-bottom: 30px;">
+    <h1 style="font-size: 30px; text-align: center; padding-top: 20px; padding-bottom: 20px;">Comments</h1>
+    <form action="{{ route('comments.add')}}" method="POST">
+        @csrf
+
+        <textarea style="height: 150px; width: 600px;" placeholder="Comment something here" name="comment"></textarea>
+        <br>
+        <input type="submit" class="btn btn-primary" value="comment">
+    </form>
+</div>
+
+<div style="padding-left: 20%;">
+    <h1 style="font-size: 20px; padding-bottom: 20px;">All Comments</h1>
+
+    @forelse($comments as $comment)
+        <div>
+            <b>{{ $comment->name }}</b>
+            <p>{{ $comment->comment }}</p>
+            <a style="color: blue;" href="javascript::void(0);" onclick="reply(this)" data-commentid="{{ $comment->id }}">Reply</a>
+
+            @foreach($reply as $rep)
+                @if($rep->comment_id == $comment->id)
+                    <div style="padding-left: 3%; padding-bottom: 10px;">
+                        <b>{{ $rep->name }}</b>
+                        <p>{{ $rep->reply }}</p>
+                        <a style="color: blue;" href="javascript::void(0);" onclick="reply(this)" data-commentid="{{ $comment->id }}">Reply</a>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    @empty
+        <p>No comments available.</p>
+    @endforelse
+</div>
+
+
+
+
+     <!--Reply Textbox-->
+   
+    <div style="display: none;" class="replyDiv">
+    <form action="{{route('reply.add')}}" method="POST">
+      @csrf
+    <input type="text" id="commentId" name="commentId" hidden="">
+
+        <textarea style="height: 100px; width: 500px;" name="reply" placeholder="write something here" ></textarea>
+        <br>
+        <button type="submit"  class="btn btn-warning">Reply</button>
+    
+        <a href="javascript::void(0);" class="btn" onclick="reply_close(this)">Close</a>
+
+
+        </form>
+    </div>
+   
+    
+</div>
+
+      <!-- Comment and reply system end here -->
 
       <!-- subscribe section -->
       <section class="subscribe_section">
@@ -600,6 +655,35 @@
       <div class="cpy_">
          <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
       </div>
+      
+
+      <script type="text/javascript"> function reply(caller)
+      {
+         document.getElementById('commentId').value=$(caller).attr('data-commentid');
+         $('.replyDiv').insertAfter($(caller));
+         $('.replyDiv').show();
+
+      }
+      
+      function reply_close(caller)
+      {
+         $('.replyDiv').hide();
+
+      }
+      
+      </script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+          </script>
+
       <!-- jQery -->
       <script src="{{ asset('js/jquery-3.4.1.min.js')}}"></script>
       <!-- popper js -->

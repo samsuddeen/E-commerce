@@ -13,16 +13,16 @@
                        <li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
                            <ul class="dropdown-menu">
-                              <li><a href="{{ url('/')}}">About</a></li>
-                              <li><a href="{{ url('/')}}">Testimonial</a></li>
-                              <li><a href="{{ url('/')}}">Blog</a></li>
+                              <li><a href="#">About</a></li>
+                              <li><a href="#">Testimonial</a></li>
+                              <li><a href="#">Blog</a></li>
                            </ul>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/')}}">Products</a>
+                           <a class="nav-link" href="#">Products</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/')}}">Contact</a>
+                           <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{{ route('show_order')}}">Order</a>
@@ -102,7 +102,7 @@
 
                             @if(auth()->check())
                                 <li class="nav-item">
-                                Hello, {{ auth()->user()->name }}    <a class="btn btn-success" href="{{ route('registerUser') }}">Logout</a>
+                                Hello, {{ auth()->user()->name }}    <a class="btn btn-success" href="{{ route('userlogout') }}">Logout</a>
                                 </li>
                             @endif
                            

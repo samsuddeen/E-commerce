@@ -17,6 +17,7 @@ class CartController extends Controller
         $data['system'] = Systemsetting::find(1);
         $_SESSION['setting'] = $data['system'];
         $data['carts'] = Cart::where('user_id',auth()->user()->id)->get();
+        
 
         return view('frontend.showcart',$data);
     }
@@ -27,6 +28,7 @@ class CartController extends Controller
         $user = auth()->user();
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity', 1);
+        
         
         // Check if the product is already in the cart
         $cartItem = Cart::where('user_id', $user->id)
@@ -51,25 +53,23 @@ class CartController extends Controller
 
         return view('frontend.showcart',$data);
     }
-    public function removeproduct($id)
-    {
-        if (!$id) {
-            return redirect()->back();
-        }
-    
-        $cartItem = Cart::find($id);
-        
 
-    
-        if (!$cartItem) {
-            // Handle the case where the Cart item is not found
-            return redirect()->back()->with('error', 'Product not found in the cart.');
-        }
-    
-        $cartItem->delete();
-    
-        return redirect()->back()->with('success', 'Product removed from the cart successfully.');
+
+        //      //Delete Record
+public function removeproduct($id){
+    if (!$id) {
+        return redirect()->back();
     }
+    $cartItem = Cart::find($id);
+
+   if($cartItem){
+    $cartItem->delete();
+   }
+   return redirect()->route('show_cart')->with('success', 'Product removed from cart successfully.');
+   }
+
+
+
 
     public function cash_order()
     {
@@ -93,7 +93,7 @@ class CartController extends Controller
             $cart=Cart::find($cart_id);
             $cart->delete();
         }
-        return redirect()->back()->with('message','we have received your order. we will connect with you soon.');
+        return redirect()->back()->with('message','we will send your order soon.');
 
 
     }

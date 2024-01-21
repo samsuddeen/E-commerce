@@ -125,13 +125,14 @@ public function deleteproduct($id){
     $data['product'] = product::find($id);
     $data['system'] = Systemsetting::find(1);
     $data['carts'] =  Cart::where('user_id',auth()->user()->id)->get();
+    
     $_SESSION['setting'] = $data['system'];
     if($data['product']){
       return view('frontend.details', $data);
     }
     if(!$id){
       session()->flash('error','product not found!');
-      return redirect()->back();
+      return redirect()->back()->with('message','we have received your order. we will connect with you soon.');
     }
 
   }

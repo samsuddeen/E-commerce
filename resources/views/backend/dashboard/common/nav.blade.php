@@ -2,7 +2,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini"><img src="{{ asset('images/logo.png') }}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini"><img src="{{ asset('images/logofront.png') }}" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -80,16 +80,17 @@
                   <h6 class="p-3 mb-0">Profile</h6>
                   
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-logout text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
-                    </div>
-                  </a>
+                     <a href="{{ route('userlogout') }}" class="dropdown-item preview-item">
+                       <div class="preview-thumbnail">
+                         <div class="preview-icon bg-dark rounded-circle">
+                           <i class="mdi mdi-logout text-danger"></i>
+                         </div>
+                       </div>
+                       <div class="preview-item-content">
+                         <p class="preview-subject mb-1">Log out</p>
+                       </div>
+                     </a>
+
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
                 </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Authenticatable;
 use App\user;
+use App\Systemsetting;
 
 class usercontroller extends Controller
 {
@@ -69,7 +70,31 @@ class usercontroller extends Controller
             }
             return redirect()->route('login');
         }
+
+        public function show_user()
+        {
+            $user= User::all();
+            return view('backend.dashboard.user', compact('user'));
+        }
     
+        public function delete_user($id)
+        {
+            $user=User::find($id);
+            
+             $user->delete();
+             return redirect()->back();
+        }
+        public function user_search(Request $request)
+        {
+            $searchterm =$request->search;
+            $data['systemdata'] = Systemsetting::find(1);
+            $_SESSION['setting'] = $data['systemdata'];
+            $user=User::where('name','LIKE','%'.$searchterm.'%')
+                ->orWhere('email','LIKE','%'.$searchterm.'%')->get();
+               
+                return view('backend.dashboard.user',compact('user'));
+      
+        }
     }
 
 

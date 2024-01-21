@@ -21,12 +21,13 @@
 @endif
 	<div class="container-fluid">
 		<div class="row">
+			
 			<div class="col-lg-6 col-md-6 d-none d-md-block image-container"></div>
 
 			<div class="col-lg-6 col-md-6 form-container">
 				<div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
 					<div class="logo mb-3">
-						<img src="{{ asset('images/logouser.png') }}" width="150px">
+						<img src="{{ asset('images/logofront.png') }}" width="150px">
 					</div>
 					<div class="heading mb-4">
 						<h4>Create an account</h4>
@@ -73,5 +74,14 @@
 			</div>
 		</div>
 	</div>
+
+	<style>
+        .img-box {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
 </body>
 </html>

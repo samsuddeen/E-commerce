@@ -65,12 +65,12 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $cart->product->name }}</td>
-                            <td>{{ $cart->product->price }}</td>
+                            <td>${{ $cart->product->price }}</td>
                             <td>{{ $cart->product->description }}</td>
                             <td><img src="{{ $cart->product->image }}" height="200px" width="200px"></td>
-                            <td><a href="{{ route('remove.product', $cart->product->id) }}" class='btn btn-danger' onclick="return confirm('Are you sure to remove this product?')">Remove</a></td>
+                            <td><a href="{{ route('remove.product', $cart->id) }}" class='btn btn-danger' onclick="return confirm('Are you sure to remove this product?')">Remove</a></td>
                         </tr>
-                        @php $total = $cart->product->price; @endphp
+                        @php $total += $cart->product->price @endphp
                     @empty
                         <tr><td colspan="6">Cart Empty</td></tr>
                     @endforelse
@@ -79,7 +79,7 @@
                     <tr>
                         <th><strong>TOTAL</strong></th>
                         <th>{{ $carts->count() }}</th>
-                        <th colspan="4"><h2>Total price : {{ $total }}</h2></th>
+                        <th colspan="4"><h2>Total price : ${{ $total }}</h2></th>
                     </tr>
                 </tfoot>
             </table>
@@ -90,7 +90,11 @@
 <br>
 <div class="center" style="text-align: center;">
     <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed To Order</h1>
-    <a href="{{ route('cash_order')}}" class="btn btn-success">Cash on Delivery</a>
+    <form action="{{ route('cash_order')}}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-success">Cash on Delivery</button>
+    </form>
+    <br>
     <a href="{{ route('stripe', ['total' => $total]) }}" class="btn btn-danger">Pay using Card</a>
 
 </div>
