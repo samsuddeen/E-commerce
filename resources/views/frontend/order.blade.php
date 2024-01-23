@@ -65,8 +65,8 @@
                                 @forelse($order as $singleOrder)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>{{ $singleOrder->user_id }}</td>
-        <td>{{ $singleOrder->product_id }}</td>
+        <td>{{ $singleOrder->users->name }}</td>
+        <td>{{ $singleOrder->product->name }}</td>
         <td>{{ $singleOrder->quantity }}</td>
         <td>{{ $singleOrder->payment_status }}</td>
         <td>{{ $singleOrder->delivery_status }}</td>

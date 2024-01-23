@@ -149,7 +149,7 @@ public function removeproduct($id){
         $_SESSION['setting'] = $data['system'];
             $user=Auth::user();
             $userid=$user->id;
-            $order=Order::where('user_id', '=', $userid)->get();
+            $order=Order::with('users','product')->where('user_id', '=', $userid)->get();
             return view('frontend.order', compact('order'));
         }
         else

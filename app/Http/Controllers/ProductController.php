@@ -159,6 +159,7 @@ public function deleteproduct($id){
 public function order()
 {
   $order= Order::all();
+
   return view('backend.dashboard.order', compact('order'));
 }
 
