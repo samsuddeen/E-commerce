@@ -135,8 +135,7 @@ Route::group(['prefix' => 'user',], function () {
     // no need to check Auth::id() in controller
     Route::post('/comments/add', 'CommentController@add_comment')->name('comments.add')->middleware('auth');
     
-     
-
+    //reply
     Route::post('/reply/add','CommentController@add_reply')->name('reply.add');
 
    
