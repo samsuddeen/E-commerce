@@ -2,7 +2,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini"><img src="{{ asset('images/logofront.png') }}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini"><img src="" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -36,7 +36,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="{{ asset('images/faces/face1.jpg') }}" alt="">
+                  
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>

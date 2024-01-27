@@ -70,7 +70,7 @@
      @include('frontend.common.footer')
       <!-- footer end -->
       <div class="cpy_">
-         <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
+      <p>{{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }} </p>
       </div>
       <!-- jQery -->
       <script src="{{ asset('js/jquery-3.4.1.min.js')}}"></script>

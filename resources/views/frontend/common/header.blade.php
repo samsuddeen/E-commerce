@@ -1,7 +1,7 @@
 <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                  <a class="navbar-brand" href="index.html"><img width="250" src="{{ asset('uploads').'/' .$_SESSION['setting']->logo}}" alt="#" /></a>
+                  <a class="navbar-brand" href="#"><img width="250" src="{{ asset('uploads').'/' .$_SESSION['setting']->logo}}" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class=""> </span>
                   </button>
@@ -91,7 +91,7 @@
                         @endif
                             @if(!auth()->check())
                         <li class="nav-item">
-                           <a class="btn btn-success" href="{{ route('registerUser') }}">Register</a>
+                           <a class="btn btn-success" href="{{ route('admin.login') }}">Admin Login</a>
                         </li>
                             @endif
 

@@ -156,9 +156,13 @@ public function deleteproduct($id){
   }
 }
 
+//Backend.order
 public function order()
 {
   $order= Order::all();
+  $data['systemdata'] = Systemsetting::find(1);
+  $_SESSION['setting'] = $data['systemdata'];
+  
 
   return view('backend.dashboard.order', compact('order'));
 }

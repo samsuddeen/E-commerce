@@ -73,6 +73,8 @@ class usercontroller extends Controller
         public function show_user()
         {
             $user= User::all();
+            $data['systemdata'] = Systemsetting::find(1);
+            $_SESSION['setting'] = $data['systemdata'];
             return view('backend.dashboard.user', compact('user'));
         }
     

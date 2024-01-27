@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Famms - Fashion Store</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
       <!-- font awesome style -->
@@ -53,10 +53,10 @@
                                     
                                  </h1>
                                  <p>
-                                 {{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }} 
+                                 {{ $_SESSION['setting']->subtitle ? $_SESSION['setting']->subtitle :'' }} 
                                  </p>
                                  <div class="btn-box">
-                                    <a href="{{ route('login') }}" class="btn1">
+                                    <a href="#product" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -66,13 +66,7 @@
                      </div>
                   </div>
                </div>
-               <div class="container">
-                  <ol class="carousel-indicators">
-                     <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-                     <li data-target="#customCarousel1" data-slide-to="1"></li>
-                     <li data-target="#customCarousel1" data-slide-to="2"></li>
-                  </ol>
-               </div>
+              
             </div>
          </section>
          <!-- end slider section -->
@@ -465,7 +459,7 @@
      @include('frontend.common.footer')
       <!-- footer end -->
       <div class="cpy_">
-         <p>© 2024 All Rights Reserved By Famms </p>
+         <p>{{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }} </p>
       </div>
       
 

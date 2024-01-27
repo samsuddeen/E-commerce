@@ -37,12 +37,12 @@ class SystemController extends Controller
      */
     public function store(Request $request)
 {
-    $request->validate([
-        'name' => 'required',
-        'email' => 'email|required',
-        'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Add image validation
-    ]);
+   $request->validate([
+       'name' => 'required',
+       'email' => 'email|required',
+       'logo' => 'required',
+       'image' => 'required',
+   ]);
 
     try {
         $logo = '';

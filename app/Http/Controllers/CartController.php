@@ -52,7 +52,7 @@ class CartController extends Controller
         $_SESSION['setting'] = $data['system'];
         $data['carts'] = Cart::with('product')->where('user_id', auth()->user()->id)->get();
     
-        return view('frontend.showcart', $data);
+        return redirect()->route('show_cart', $data);
     }
 
         //      //Delete Record

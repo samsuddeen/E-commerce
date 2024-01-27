@@ -105,7 +105,7 @@ Route::group(['prefix' => 'user',], function () {
     //remove product
     Route::get('/remove-product/{id}', 'CartController@removeproduct')->name('remove.product');
     //cash_order
-    Route::post('/cash_order', 'CartController@cash_order')->name('cash_order');
+    Route::get('/cash_order', 'CartController@cash_order')->name('cash_order');
 
 
     //card_payment

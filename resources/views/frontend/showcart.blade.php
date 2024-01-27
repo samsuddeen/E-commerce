@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Famms - Fashion Store</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
       <!-- font awesome style -->
@@ -90,7 +90,7 @@
 <br>
 <div class="center" style="text-align: center;">
     <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed To Order</h1>
-    <form action="{{ route('cash_order')}}" method="post">
+    <form action="{{ route('cash_order')}}" method="get">
         @csrf
         <button type="submit" class="btn btn-success">Cash on Delivery</button>
     </form>
@@ -98,6 +98,7 @@
     <a href="{{ route('stripe', ['total' => $total]) }}" class="btn btn-danger">Pay using Card</a>
 
 </div>
+
 
             
        
@@ -107,7 +108,7 @@
      @include('frontend.common.footer')
       <!-- footer end -->
       <div class="cpy_">
-         <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
+      <p>{{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }} </p>
       </div>
 
       <!-- jQery -->
