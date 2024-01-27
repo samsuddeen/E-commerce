@@ -34,35 +34,34 @@ class usercontroller extends Controller
     
        
     public function signin(Request $request){
-       
+        
         $request->validate([
-                'email' =>'required|email',
-                'password' =>'required|min:6'
-            ]);
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
     
-            //find user
-            $user = User::where('email',$request->email)->first();
-            if($user){
-                if($user->password){
-                    if(Hash::check($request->password, $user->password)){
-                        Auth::login($user);
-                        if($user->role =='admin'){
-                            return redirect()->route('userdashboard');
-                            }
-                         else if ($user->role =='user'){
-                             return redirect()->route('userdashboard');
-                            }
-                    else{
-                           return redirect()->back()->with('error', 'Check Email , Password!');
-                            }
-                    }
-                    $request->session()->flash('error', 'Please check Password');
-                    return redirect()->back();
-                } 
+        // Find user
+        $user = User::where('email', $request->email)->first();
+    
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Authentication successful
+            Auth::login($user);
+    
+            if ($user->role == 'admin') {
+                return redirect()->route('userdashboard');
+            } elseif ($user->role == 'user') {
+                return redirect()->route('userdashboard');
+            } else {
+                return redirect()->back()->with('error', 'Check Email, Password!');
             }
-            $request->session()->flash('error', 'User Not found');
-            return redirect()->back();
         }
+    
+        // Authentication failed
+        $request->session()->flash('error', 'Invalid email or password');
+        return redirect()->back();
+    }
+    
+
         public function logout(){
             if(Auth::check()){
                 Auth::logout();

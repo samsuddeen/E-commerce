@@ -69,10 +69,43 @@
                         @if($errors->first('Logo'))
                     <span style='color:red;'>{{$errors->first('Logo')}}</span>
                    @endif 
-                  </div>
-
-                      <a href='{{ asset("uploads/$system->logo")}}'  target='_blank'> <img src='{{ asset("uploads/$system->logo")}}' height ='200px' width='200px'></a>
+                  </div>                  
+                      <a href='{{ asset("uploads/$system->logo")}}'  target='_blank'> <img src='{{ asset("uploads/$system->logo")}}' height ='200px' width='200px'></a>            
                     </div>
+
+
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Title</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Title" name='title'>
+                    @if($errors->first('title'))
+                        <span style='color:red;'>{{ $errors->first('title') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Subtitle</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Subtitle" name='subtitle'>
+                    @if($errors->first('subtitle'))
+                        <span style='color:red;'>{{ $errors->first('subtitle') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile" name='image'>
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            @if($errors->first('image'))
+                                <span style='color:red;'>{{ $errors->first('image') }}</span>
+                            @endif
+                        </div>
+                        <a href='{{ asset("uploads/$system->image") }}' target='_blank'>
+                            <img src='{{ asset("uploads/$system->image") }}' height='200px' width='200px'>
+                        </a>
+                    </div>
+
+
                   </div>                
                 </div>
                 <!-- /.card-body -->

@@ -1,3 +1,4 @@
+
 Dear {{ auth()->user()->name }}
 
 <p>Thanks for your order</p>

@@ -32,12 +32,12 @@
 
          <!-- end header section -->
 
-         @if(session()->has('message'))
-         <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            {{session()->get('message')}}
-</div>
+         @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
 @endif
+
 
         
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -8,6 +8,51 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .container-fluid {
+            height: 100vh; /* 100% of the viewport height */
+        }
+
+        .row {
+            height: 100%;
+        }
+
+        .img-box {
+            height: 100%;
+            width: 50%; /* Adjust as needed */
+            display: flex;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .form-container {
+            height: 100%;
+            width: 50%; /* Adjust as needed */
+        }
+
+        .form-box {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+    </style>
 </head>
 <body>
 @if ($errors->any())
@@ -19,19 +64,20 @@
         </ul>
     </div>
 @endif
-	<div class="container-fluid">
-		<div class="row">
-			
-			<div class="col-lg-6 col-md-6 d-none d-md-block image-container"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-7 col-md-6 img-box">
+            <img src="{{ asset('images/bg.jpg') }}" alt="">
+        </div>
 
-			<div class="col-lg-6 col-md-6 form-container">
-				<div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
-					<div class="logo mb-3">
-						<img src="{{ asset('images/logofront.png') }}" width="150px">
-					</div>
-					<div class="heading mb-4">
-						<h4>Create an account</h4>
-					</div>
+        <div class="col-lg-5 col-md-6 form-container">
+            <div class="form-box text-center">
+                <div class="logo mb-3">
+                    <img src="{{ asset('images/logofront.png') }}" alt="" width="150px">
+                </div>
+                <div class="heading mb-4">
+                    <h4>Create an Account</h4>
+                </div>
 					<form action="{{route('user.register')}}" method="post">
                     @csrf
 						<div class="form-input">
@@ -46,27 +92,17 @@
 							<span><i class="fa fa-lock"></i></span>
 							<input type="password" placeholder="Password" required name="password">
 						</div>
-						<div class="row mb-3">
-							<div class="col-12 d-flex">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="cb1">
-									<label class="custom-control-label text-white" for="cb1">I agree all terms & conditions</label>
-								</div>
-							</div>
-						</div>
+						
+									
 						<div class="text-left mb-3">
+							<br>
+							<br>
 							<button type="submit" class="btn">Register</button>
-						</div>
-						<div class="text-center mb-2">
-							<div class="mb-3" style="color: #777">or register with</div>
-
-							<a href="" class="btn btn-social btn-facebook">facebook</a>
-
-							<a href="" class="btn btn-social btn-google">google</a>
-
-							<a href="" class="btn btn-social btn-twitter">twitter</a>
-						</div>
+					
+						
 						<div style="color: #777">Already have an account
+						<br>
+						
 							<a href="{{ route('login') }}" class="login-link">Login here</a>
 						</div>
 					</form>
@@ -75,13 +111,6 @@
 		</div>
 	</div>
 
-	<style>
-        .img-box {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: flex-end;
-        }
-    </style>
+	
 </body>
 </html>

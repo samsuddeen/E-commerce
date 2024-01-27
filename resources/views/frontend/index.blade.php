@@ -36,7 +36,7 @@
          <!-- slider section -->
          <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="{{ asset('images/slider-bg.jpg')}}" alt="">
+               <img src="{{ asset('uploads').'/' .$_SESSION['setting']->image}}" alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
@@ -47,66 +47,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    {{ $_SESSION['setting']->title ? $_SESSION['setting']->title :'' }}
                                     </span>
                                     <br>
-                                    On Everything
+                                    
                                  </h1>
                                  <p>
-                                 𝓡𝓮𝓿𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓲𝔃𝓮 𝔂𝓸𝓾𝓻 𝓼𝓱𝓸𝓹𝓹𝓲𝓷𝓰 𝓮𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝔀𝓲𝓽𝓱 𝓸𝓾𝓻 𝓮𝔁𝓬𝓵𝓾𝓼𝓲𝓿𝓮 𝓮𝓒𝓸𝓶𝓶𝓮𝓻𝓬𝓮 𝓼𝓵𝓲𝓭𝓮𝓻, 𝔀𝓱𝓮𝓻𝓮 𝓼𝓽𝔂𝓵𝓮 𝓶𝓮𝓮𝓽𝓼 𝓼𝓪𝓿𝓲𝓷𝓰𝓼. 𝓤𝓷𝓬𝓸𝓿𝓮𝓻 𝓽𝓱𝓮 𝓵𝓪𝓽𝓮𝓼𝓽 𝓽𝓻𝓮𝓷𝓭𝓼 𝓪𝓷𝓭 𝓯𝓪𝓼𝓱𝓲𝓸𝓷-𝓯𝓸𝓻𝔀𝓪𝓻𝓭 𝓯𝓲𝓷𝓭𝓼 𝓽𝓱𝓪𝓽 𝔀𝓲𝓵𝓵 𝓮𝓵𝓮𝓿𝓪𝓽𝓮 𝔂𝓸𝓾𝓻 𝔀𝓪𝓻𝓭𝓻𝓸𝓫𝓮 𝓽𝓸 𝓷𝓮𝔀 𝓱𝓮𝓲𝓰𝓱𝓽𝓼. 
+                                 {{ $_SESSION['setting']->slogan ? $_SESSION['setting']->slogan :'' }} 
                                  </p>
                                  <div class="btn-box">
                                     <a href="{{ route('login') }}" class="btn1">
-                                    Shop Now
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item ">
-                     <div class="container ">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-6 ">
-                              <div class="detail-box">
-                                 <h1>
-                                    <span>
-                                    Sale 20% Off
-                                    </span>
-                                    <br>
-                                    On Everything
-                                 </h1>
-                                 <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                                 </p>
-                                 <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    Shop Now
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="container ">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-6 ">
-                              <div class="detail-box">
-                                 <h1>
-                                    <span>
-                                    Sale 20% Off
-                                    </span>
-                                    <br>
-                                    On Everything
-                                 </h1>
-                                 <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                                 </p>
-                                 <div class="btn-box">
-                                    <a href="" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -378,35 +328,10 @@
       </section>
       <!-- end why section -->
       
-      <!-- arrival section -->
-      <section class="arrival_section">
-         <div class="container">
-            <div class="box">
-               <div class="arrival_bg_box">
-                  <img src="{{ asset('images/arrival-bg.png')}}" alt="">
-               </div>
-               <div class="row">
-                  <div class="col-md-6 ml-auto">
-                     <div class="heading_container remove_line_bt">
-                        <h2>
-                           #NewArrivals
-                        </h2>
-                     </div>
-                     <p style="margin-top: 20px;margin-bottom: 30px;">
-                        Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit ullam sit earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique ex unde!
-                     </p>
-                     <a href="">
-                     Shop Now
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end arrival section -->
+      
       
       <!-- product section -->
-      <section class="product_section layout_padding">
+      <section class="product_section layout_padding" id="product">
       <div class="container">
          <div class="heading_container heading_center">
                <h2>
@@ -534,126 +459,13 @@
 
       <!-- Comment and reply system end here -->
 
-      <!-- subscribe section -->
-      <section class="subscribe_section">
-         <div class="container-fuild">
-            <div class="box">
-               <div class="row">
-                  <div class="col-md-6 offset-md-3">
-                     <div class="subscribe_form ">
-                        <div class="heading_container heading_center">
-                           <h3>Subscribe To Get Discount Offers</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-                        <form action="">
-                           <input type="email" placeholder="Enter your email">
-                           <button>
-                           subscribe
-                           </button>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end subscribe section -->
-      <!-- client section -->
-      <section class="client_section layout_padding">
-         <div class="container">
-            <div class="heading_container heading_center">
-               <h2>
-                  Customer's Testimonial
-               </h2>
-            </div>
-            <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <div class="box col-lg-10 mx-auto">
-                        <div class="img_container">
-                           <div class="img-box">
-                              <div class="img_box-inner">
-                                 <img src="{{ asset('images/client.jpg')}}" alt="">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="detail-box">
-                           <h5>
-                              Anna Trevor
-                           </h5>
-                           <h6>
-                              Customer
-                           </h6>
-                           <p>
-                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="box col-lg-10 mx-auto">
-                        <div class="img_container">
-                           <div class="img-box">
-                              <div class="img_box-inner">
-                                 <img src="{{ asset('images/client.jpg')}}" alt="">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="detail-box">
-                           <h5>
-                              Anna Trevor
-                           </h5>
-                           <h6>
-                              Customer
-                           </h6>
-                           <p>
-                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="box col-lg-10 mx-auto">
-                        <div class="img_container">
-                           <div class="img-box">
-                              <div class="img_box-inner">
-                                 <img src="{{ asset('images/client.jpg')}}" alt="">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="detail-box">
-                           <h5>
-                              Anna Trevor
-                           </h5>
-                           <h6>
-                              Customer
-                           </h6>
-                           <p>
-                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="carousel_btn_box">
-                  <a class="carousel-control-prev" href="#carouselExample3Controls" role="button" data-slide="prev">
-                  <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                  <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExample3Controls" role="button" data-slide="next">
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                  <span class="sr-only">Next</span>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end client section -->
+      
+      
       <!-- footer start -->
      @include('frontend.common.footer')
       <!-- footer end -->
       <div class="cpy_">
-         <p>© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
+         <p>© 2024 All Rights Reserved By Famms </p>
       </div>
       
 

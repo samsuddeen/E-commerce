@@ -53,8 +53,8 @@
                 <thead>
                     <tr>
                                      <th>S.N</th>
-                                     <th> User_id</th>      
-                                    <th>  Product_id</th>                                   
+                                     <th> User Name</th>      
+                                    <th>  Product Name</th>                                   
                                     <th> Quantity </th>
                                     <th> Payment_Status </th>
                                     <th> Delivery_Status </th>                                                             

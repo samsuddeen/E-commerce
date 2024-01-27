@@ -24,17 +24,15 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-
         $user = auth()->user();
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity', 1);
-        
-        
+    
         // Check if the product is already in the cart
         $cartItem = Cart::where('user_id', $user->id)
             ->where('product_id', $productId)
             ->first();
-
+    
         if ($cartItem) {
             // If the product is already in the cart, update the quantity
             $cartItem->update(['quantity' => $cartItem->quantity + $quantity]);
@@ -45,15 +43,17 @@ class CartController extends Controller
                 'product_id' => $productId,
                 'quantity' => $quantity,
             ]);
+    
+            // Set a success message
+            Session::flash('success', 'Successfully added to cart!');
         }
-
+    
         $data['system'] = Systemsetting::find(1);
         $_SESSION['setting'] = $data['system'];
-        $data['carts'] =  Cart::with('product')->where('user_id',auth()->user()->id)->get();
-
-        return view('frontend.showcart',$data);
+        $data['carts'] = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+    
+        return view('frontend.showcart', $data);
     }
-
 
         //      //Delete Record
 public function removeproduct($id){
@@ -71,32 +71,34 @@ public function removeproduct($id){
 
 
 
-    public function cash_order()
-    {
-        $user=Auth::user();
-        $userid=$user->id;
-        
-        $data = Cart::where('user_id','=',$userid)->get();
-        foreach($data as $data)
-        {
-            $order=new order;
-    
-            $order->user_id=$data->user_id;
-            $order->quantity=$data->quantity;
-            $order->product_id=$data->product_id;
-        
-            $order->payment_status='cash on delivery';
-            $order->delivery_status='processing';
-            
-            $order->save();
-            $cart_id=$data->id;
-            $cart=Cart::find($cart_id);
-            $cart->delete();
-        }
-        return redirect()->back()->with('message','we will send your order soon.');
+   public function cash_order()
+{
+    $user = Auth::user();
+    $userid = $user->id;
 
+    $data = Cart::where('user_id', '=', $userid)->get();
 
+    foreach ($data as $data) {
+        $order = new order;
+
+        $order->user_id = $data->user_id;
+        $order->quantity = $data->quantity;
+        $order->product_id = $data->product_id;
+
+        $order->payment_status = 'cash on delivery';
+        $order->delivery_status = 'processing';
+
+        $order->save();
+        $cart_id = $data->id;
+        $cart = Cart::find($cart_id);
+        $cart->delete();
     }
+
+    Session::flash('success', 'Order placed successfully. We will send your order soon.');
+
+    return redirect()->back();
+}
+
 
     public function stripe($total)
     {

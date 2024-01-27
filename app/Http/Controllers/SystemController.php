@@ -36,51 +36,60 @@ class SystemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-       $request->validate([
-            'name' => 'required',
-            'email' =>'email|required'
-       ]);
-      try{
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'email|required',
+        'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Add image validation
+    ]);
 
+    try {
         $logo = '';
-       
-        if($request->has('logo') &&  $request->file('logo')){
-            $setting  = Systemsetting::find(1);
-            if($setting && $setting->logo){
-               
-                 if(file_exists(public_path("/uploads/$setting->logo"))){
-                    unlink(public_path("uploads/$setting->logo"));
-                 }
-            }
- 
-         $file  = $request->file('logo');
-         $newName = time().'-'. rand(10,9999999999999).'-'.$file->getClientOriginalName();
-         $newPath = public_path()."/uploads/";
-         $file->move($newPath, $newName);
-         $logo = $newName;
-        }
- 
-        $data = [
-         'name' =>$request->name,
-         'phone' =>$request->mobile,
-         'email' =>$request->email,
-         'slogan' =>$request->slogan ?? '',
-         'logo' =>$logo,
-         'address' =>$request->address
-        ];
-   
-        $status  = Systemsetting::updateOrCreate(['id' => 1], $data);
+        $image = '';
 
-        if($status){
-         return redirect()->back()->with(['system' => $status]);
+        if ($request->hasFile('logo')) {
+            $logoFile = $request->file('logo');
+            $logoName = time() . '-' . rand(10, 9999999999999) . '-' . $logoFile->getClientOriginalName();
+            $logoPath = public_path("uploads/");
+            $logoFile->move($logoPath, $logoName);
+            $logo = $logoName;
         }
-      }catch(\Exception $e) {
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $imageName = time() . '-' . rand(10, 9999999999999) . '-' . $imageFile->getClientOriginalName();
+            $imagePath = public_path("uploads/");
+            $imageFile->move($imagePath, $imageName);
+            $image = $imageName;
+        }
+
+        $data = [
+            'name' => $request->name,
+            'phone' => $request->mobile,
+            'email' => $request->email,
+            'slogan' => $request->slogan ?? '',
+            'logo' => $logo,
+            'address' => $request->address,
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'image' => $image,
+        ];
+
+        $status = Systemsetting::updateOrCreate(['id' => 1], $data);
+
+        if ($status) {
+            return redirect()->back()->with(['system' => $status->logo]);
+        }
+    } catch (\Exception $e) {
         dd($e);
         return redirect()->back()->withInput();
-      }
-
     }
+}
+
+
+    
+    
 
     /**
      * Display the specified resource.

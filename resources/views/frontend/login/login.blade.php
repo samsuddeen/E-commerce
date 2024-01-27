@@ -1,73 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Login Form</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<style>
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+.main{
+	width: 350px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+label{
+	color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+input{
+	width: 60%;
+	height: 20px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button:hover{
+	background: #6d44b8;
+}
+.login{
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #573b8a;
+	transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
+}
+
+
+</style>
 </head>
 <body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-7 col-md-6 img-box">
-				<img src="{{ asset('images/bg.jpg') }}" alt="">
+			<div class="signup">
+            <form action="{{route('user.register')}}" method="post">
+                    @csrf
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="fullname" placeholder="User name" required>
+					<input type="email" name="email" placeholder="Email" required>
+					<input type="password" name="password" placeholder="Password" required>
+					<button type="submit" class="btn">Sign up</button>
+				</form>
 			</div>
 
-			<div class="col-lg-5 col-md-6 form-container">
-				<div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
-					<div class="logo mb-3">
-						<img src="{{ asset('images/logofront.png') }}" width="150px">
-					</div>
-					<div class="heading mb-4">
-						<h4>Login into your account</h4>
-					</div>
-					<form action="{{route('user.login')}}" method="post">
-						@csrf 
-						<div class="form-input">
-							<span><i class="fa fa-envelope"></i></span>
-							<input type="email" placeholder="Email Address" required name="email">
-						</div>
-						<div class="form-input">
-							<span><i class="fa fa-lock"></i></span>
-							<input type="password" placeholder="Password" required name="password">
-						</div>
-						<div class="row mb-3">
-							<div class="col-6 d-flex">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="cb1">
-									<label class="custom-control-label text-white" for="cb1">Remember me</label>
-								</div>
-							</div>
-							<div class="col-6 text-right">
-								<a href="forget.html" class="forget-link">Forget Password</a>
-							</div>
-						</div>
-						<div class="text-left mb-3">
-							<button type="submit" class="btn">Login</button>
-						</div>
-						<div class="text-center mb-2">
-							<div style="color: #777">Don't have an account
-								<a href="{{ route('registerUser') }}" class="register-link">Register here</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+			<div class="login">
+    <form action="{{ route('user.login') }}" method="post">
+        @csrf
+        <label for="chk" aria-hidden="true">Login</label>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
+
 	</div>
-
-	<style>
-        .img-box {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: flex-end;
-        }
-    </style>
-
 </body>
 </html>
