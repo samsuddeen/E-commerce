@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Category;
-
+use App\Systemsetting;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,6 +10,8 @@ class CategoryController extends Controller
     public function index()
     {
         $data['categories'] = Category::paginate(5);
+        $data['system'] = Systemsetting::find(1);
+        $_SESSION['setting'] = $data['system'];
         return view('backend.category.display', $data);
     }
 
@@ -27,6 +29,8 @@ class CategoryController extends Controller
 
      //Display Data
      public function displayData(){
+        $data['system'] = Systemsetting::find(1);
+        $_SESSION['setting'] = $data['system'];
         $data= category::all();
          return view('backend.category.display',compact('data'));
      }
@@ -38,6 +42,9 @@ class CategoryController extends Controller
          return redirect()->back();
      }
      $cat_data= category::find($id);
+     $data['system'] = Systemsetting::find(1);
+     $_SESSION['setting'] = $data['system'];
+     
     if($cat_data){
      return view('backend.category.edit',compact('cat_data'));
     }
@@ -52,6 +59,8 @@ class CategoryController extends Controller
           return redirect()->back();
       }
       $cat_data= category::find($id);
+      $data['system'] = Systemsetting::find(1);
+      $_SESSION['setting'] = $data['system'];
      if($cat_data){
       $data=[
           'category_name' =>$request->catename,
@@ -77,6 +86,13 @@ class CategoryController extends Controller
    }
    return redirect()->back();
    }
+
+public function dispsetting()
+{
+    $data['system'] = Systemsetting::find(1);
+    $_SESSION['setting'] = $data['system'];
+    return view('backend.category.create',compact('data'));
+}
 
 
 }

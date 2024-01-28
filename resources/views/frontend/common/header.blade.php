@@ -1,3 +1,12 @@
+<style>
+   #logincss
+   {
+      margin-right: 10px;
+   }
+</style>
+
+
+
 <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -86,7 +95,7 @@
                         @if(!auth()->check())
                                 <li>
                                 <li class="nav-item">
-                                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+                                    <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
                                 </li>
                         @endif
                             @if(!auth()->check())
@@ -97,7 +106,7 @@
 
                             @if(auth()->check())
                                 <li class="nav-item">
-                                Hello, {{ auth()->user()->name }}    <a class="btn btn-success" href="{{ route('userlogout') }}">Logout</a>
+                                Hello, {{ auth()->user()->name }}    <a class="btn btn-danger" href="{{ route('userlogout') }}">Logout</a>
                                 </li>
                             @endif
                            

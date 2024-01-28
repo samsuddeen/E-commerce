@@ -31,7 +31,7 @@
                                     <th>User_id</th>
                                      <th> Name</th>      
                                     <th>  Email</th>                                   
-                                    <th> Password </th>                                                                                     
+                                                                                                                       
                                     <th> Action </th>
                                     </tr>
                                 </thead>
@@ -41,11 +41,11 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $singleuser->name }}</td>
         <td>{{ $singleuser->email }}</td>
-        <td>{{ $singleuser->password }}</td>
+        
         
         
         <td>    
-        <a href="{{ route('delete_user', $singleuser->id) }}" class='btn btn-danger' onclick="return confirm('Are you sure to delete')">Delete</a>
+        <a href="{{ route('delete_user', $singleuser->id) }}" class='btn btn-danger' onclick="return confirm('Are you sure to delete this user?')">Delete</a>
            
         </td>
     </tr>

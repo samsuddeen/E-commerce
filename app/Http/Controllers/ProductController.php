@@ -37,14 +37,22 @@ class ProductController extends Controller
    return redirect()->back();
 }
 
+
+
+
+
 //Category Display
 public function displayData(){
+  $data['system'] = Systemsetting::find(1);
+  $_SESSION['setting'] = $data['system'];
     $data['categories']= category::where('status',1)->get();
      return view('backend.product.create',$data);
  }
 
  //product Display
  public function displayproduct(){
+  $data['system'] = Systemsetting::find(1);
+  $_SESSION['setting'] = $data['system'];
     $data= product::all();
      return view('backend.product.display',compact('data'));
  }
@@ -56,6 +64,8 @@ public function displayData(){
            return redirect()->back();
        }
        $cat_data= product::find($id);
+       $data['system'] = Systemsetting::find(1);
+       $_SESSION['setting'] = $data['system'];
        $categories = Category::all();
       if($cat_data){
 
@@ -74,6 +84,8 @@ public function deleteproduct($id){
     }
 
    $cat_data= product::find($id);
+   $data['system'] = Systemsetting::find(1);
+   $_SESSION['setting'] = $data['system'];
    if($cat_data){
     $cat_data->delete();
    }
@@ -114,6 +126,8 @@ public function deleteproduct($id){
 
 
     public function index(){
+      $data['system'] = Systemsetting::find(1);
+      $_SESSION['setting'] = $data['system'];
         $data['categories'] = Category::where('status',1)->get();
         return view('backend.product.create', $data);
 

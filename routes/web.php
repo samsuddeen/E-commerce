@@ -47,7 +47,7 @@ Route::group(['prefix' =>'admin','middleware'=>'auth'], function () {
 
      //Category Create
    Route::post('/category-data','categorycontroller@categorydata')->name('category.data');
-   Route::view('/category','backend.category.create')->name('category');
+   Route::get('/category','categorycontroller@dispsetting')->name('category');
    //Category Display
    Route::get('/admin.display','categorycontroller@displayData')->name('admin.display');
    //Category Edit

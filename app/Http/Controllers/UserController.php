@@ -27,48 +27,48 @@ class usercontroller extends Controller
         ];
       
         user::insert($data);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Signup successful!');
     
         
     }
     
        
-    public function signin(Request $request){
-        
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-    
-        // Find user
-        $user = User::where('email', $request->email)->first();
-    
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Authentication successful
-            Auth::login($user);
-    
-            if ($user->role == 'admin') {
-                return redirect()->route('userdashboard');
-            } elseif ($user->role == 'user') {
-                return redirect()->route('userdashboard');
-            } else {
-                return redirect()->back()->with('error', 'Check Email, Password!');
-            }
-        }
-    
-        // Authentication failed
-        $request->session()->flash('error', 'Invalid email or password');
-        return redirect()->back();
+    public function signin(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|min:6'
+    ]);
+
+    // Find user
+    $user = User::where('email', $request->email)->first();
+
+    if ($user && Hash::check($request->password, $user->password)) {
+        // Authentication successful
+        Auth::login($user);
+
+        $redirectRoute = ($user->role == 'admin' || $user->role == 'user') ? 'userdashboard' : 'home';
+
+        return redirect()->route($redirectRoute)->with('success', 'Login successful!');
     }
+
+    // Authentication failed
+    $request->session()->flash('error', 'Invalid email or password');
+    return redirect()->back();
+}
+
     
 
-        public function logout(){
-            if(Auth::check()){
-                Auth::logout();
-                return redirect()->route('login');
-            }
-            return redirect()->route('login');
-        }
+public function logout()
+{
+    if (Auth::check()) {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Logout successful!');
+    }
+
+    return redirect()->route('login');
+}
+
 
         public function show_user()
         {

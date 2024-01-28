@@ -1,77 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin login Page</title>
-    <link rel="shortcut icon" href="{{ asset('assetslogin/images/fav.png') }}" type="image/x-icon">
-   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('assetslogin/images/fav.jpg') }}">
-    <link rel="stylesheet" href="{{ asset('assetslogin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assetslogin/css/style.css') }}" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Animated Login Page</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Open Sans', sans-serif;
+		}
+		body
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #111;
+		}
+		.square
+		{
+			position: relative;
+			width: 500px;
+			height: 500px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.square i
+		{
+			position: absolute;
+			inset: 0;
+			border: 2px solid #fff;
+			transition: 0.5s;
+		}
+		.square i:nth-child(1)
+		{
+			border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+			animation: animate 6s linear infinite;
+		}
+		.square i:nth-child(2)
+		{
+			border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+			animation: animate 4s linear infinite;
+		}
+		.square i:nth-child(3)
+		{
+			border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+			animation: animate2 10s linear infinite;
+		}
+		.square:hover i
+		{
+			border: 6px solid var(--clr);
+			filter: drop-shadow(0 0 20px var(--clr));
+		}
+		@keyframes animate
+		{
+			0%
+			{
+				transform: rotate(0deg);
+			}
+			100%
+			{
+				transform: rotate(360deg);
+			}
+		}
+		@keyframes animate2
+		{
+			0%
+			{
+				transform: rotate(360deg);
+			}
+			100%
+			{
+				transform: rotate(0deg);
+			}
+		}
+		.login 
+		{
+			position: absolute;
+			width: 300px;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 20px;
+		}
+		.login h2 
+		{
+			font-size: 2em;
+			color: #fff;
+		}
+		.login .inputBx 
+		{
+			position: relative;
+			width: 100%;
+		}
+		.login .inputBx input 
+		{
+			position: relative;
+			width: 100%;
+			padding: 12px 20px;
+			background: transparent;
+			border: 2px solid #fff;
+			border-radius: 40px;
+			font-size: 1.2em;
+			color: #fff;
+			box-shadow: none;
+			outline: none;
+		}
+		.login .inputBx input[type="submit"]
+		{
+			width: 100%;
+			background: #0078ff;
+			background: linear-gradient(45deg,#ff357a,#fff172);
+			border: none;
+			cursor: pointer;
+		}
+		.login .inputBx input::placeholder 
+		{
+			color: rgba(255,255,255,0.75);
+		}
+		.login .links
+		{
+			position: relative;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 20px;
+		}
+		.login .links a 
+		{
+			color: #fff;
+			text-decoration: none;
+		}
+		</style>
 </head>
-
-
 <body>
+	<div class="square">
+		<i style="--clr:#ff357a;"></i>
+		<i style="--clr:#73a2ac;"></i>
+		<i style="--clr:#fff172;"></i>
+		<div class="login">
+			<h2>Login</h2>
 
-
-<form action='{{ route("admin.login.submit")}}' method='POST'>
+			<form action='{{ route("admin.login.submit")}}' method='POST'>
     @csrf
-    
-    <div class="container-fluid">
-        <div class="container">
-            <div class="col-xl-10 col-lg-11 mx-auto login-container">
-                <div class="row">
-                   
-                    <div class="col-lg-5 col-md-6 no-padding">
-                        <div class="login-box">
-                            <h5>Welcome Back!</h5>
-
-                            
-                            <div class="login-row row no-margin">
-                                <label for=""><i class="fas fa-envelope"></i> Email Address</label>
-                                <input type="text" class="form-control form-control-sm" name='email'>
-                                @if($errors->first('email'))
-                                <span style='color:red;'>{{$errors->first('email')}}</span>
-                                @endif
-                            </div>
-
-                             <div class="login-row row no-margin">
-                                <label for=""><i class="fas fa-unlock-alt"></i> Password</label>
-                                <input type="password" class="form-control form-control-sm" name='password'>
-                                @if($errors->first('password'))
-                                <span style='color:red;'>{{$errors->first('password')}}</span>
-                                @endif
-
-                                
-                            </div>
-
-                        
-                               
-                             <div class="login-row btnroo row no-margin">
-                               <button type="submit" class="btn btn-primary btn-sm"> Submit</button>
-                            
-                            </div>
-                            <div class="login-row donroo row no-margin">
-                              
-                            </div>
-                        </div>
-                    </div>
-                    
-                     <div class="col-lg-7 col-md-6 img-box">
-                        <img src="{{ asset('images/sideimg.png') }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
+			<div class="inputBx">
+				<input type="text" placeholder="Email" name='email'>
+			</div>
+			<br>
+			<div class="inputBx">
+				<input type="password" placeholder="Password" name='password'>
+			</div>
+			<div class="inputBx">
+                <br>
+				<input type="submit" value="Login">
+			</div>
+			
+		</form>
+		</div>
+	</div>
 </body>
-
-<script src="{{ asset('js/popper.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
-
 </html>

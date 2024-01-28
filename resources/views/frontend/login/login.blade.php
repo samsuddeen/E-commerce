@@ -100,10 +100,18 @@ button:hover{
 </style>
 </head>
 <body>
-	<div class="main">  	
+	
+
+	<div class="main"> 
+	
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
+			@if(session('success'))
+    <div class="alert alert-success" style="background-color: #28a745; color: #fff; text-align: center; padding: 10px;">
+        {{ session('success') }}
+    </div>
+@endif 	
             <form action="{{route('user.register')}}" method="post">
                     @csrf
 					<label for="chk" aria-hidden="true">Sign up</label>
@@ -113,6 +121,7 @@ button:hover{
 					<button type="submit" class="btn">Sign up</button>
 				</form>
 			</div>
+			
 
 			<div class="login">
     <form action="{{ route('user.login') }}" method="post">
@@ -125,11 +134,13 @@ button:hover{
         <button type="submit" class="btn">Login</button>
     </form>
 
+
     @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
+    <div class="alert alert-danger" style="background-color: #dc3545; color: #fff; text-align: center; padding: 10px;">
+        {{ session('error') }}
+    </div>
+@endif
+
 </div>
 
 	</div>

@@ -20,14 +20,7 @@
                   <div class="col-md-7">
                      <div class="row">
                         <div class="col-md-6">
-                     <div class="widget_menu">
-                        <h3>Menu</h3>
-                        <ul>
-                           <li><a href="#">Home</a></li>
-                           <li><a href="#product">Product</a></li>
-                           <li><a href="#contact">Contact</a></li>
-                        </ul>
-                     </div>
+                     
                   </div>
                   
                      </div>

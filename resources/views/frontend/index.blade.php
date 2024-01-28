@@ -176,7 +176,7 @@
                            Fast Delivery
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        quick transit, swift delivery for efficient service.
                         </p>
                      </div>
                   </div>
@@ -291,7 +291,7 @@
                            Free Shiping
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        shipping is complimentary with purchase.
                         </p>
                      </div>
                   </div>
@@ -312,7 +312,7 @@
                            Best Quality
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        superior excellence; top-notch quality and craftsmanship.
                         </p>
                      </div>
                   </div>
@@ -450,6 +450,8 @@
    
     
 </div>
+<br>
+<br>
 
       <!-- Comment and reply system end here -->
 

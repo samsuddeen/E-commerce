@@ -39,7 +39,7 @@
     <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="img-box">
-            <img src="{{ $product->image }}" alt="">
+            <img src="{{ $product->image }}" alt="" style="max-width: 100%; max-height: 500px; width: 100%;">
         </div>
         <div class="detail-box">
             <h5>

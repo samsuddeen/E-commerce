@@ -2,7 +2,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini"><img src="" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini"><img src="{{ asset('uploads').'/' .$_SESSION['setting']->logo}}" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -26,8 +26,8 @@
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-email"></i>
+                
+                  
                   <span class="count bg-success"></span>
                 </a>
               
@@ -37,7 +37,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                   
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ auth()->user()->name }}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>

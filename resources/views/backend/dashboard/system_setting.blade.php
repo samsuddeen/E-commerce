@@ -69,8 +69,15 @@
                         @if($errors->first('Logo'))
                     <span style='color:red;'>{{$errors->first('Logo')}}</span>
                    @endif 
-                  </div>                  
-                      <a href='{{ asset("uploads/$system->logo")}}'  target='_blank'> <img src='{{ asset("uploads/$system->logo")}}' height ='200px' width='200px'></a>            
+                  </div> 
+
+                       @if(isset($system))
+        <div>
+            <a href='{{ asset("uploads/$system->logo") ?? "#" }}' target='_blank'>
+                <img src='{{ asset("uploads/$system->logo") ?? asset("path/to/default-logo.jpg") }}' height='200px' width='200px'>
+            </a>
+        </div>
+        @endif
                     </div>
 
 
@@ -100,9 +107,13 @@
                                 <span style='color:red;'>{{ $errors->first('image') }}</span>
                             @endif
                         </div>
-                        <a href='{{ asset("uploads/$system->image") }}' target='_blank'>
-                            <img src='{{ asset("uploads/$system->image") }}' height='200px' width='200px'>
-                        </a>
+                        @if(isset($system))
+        <div>
+            <a href='{{ asset("uploads/$system->image") ?? "#" }}' target='_blank'>
+                <img src='{{ asset("uploads/$system->image") ?? asset("path/to/default-image.jpg") }}' height='200px' width='200px'>
+            </a>
+        </div>
+        @endif
                     </div>
 
 

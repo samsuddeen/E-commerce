@@ -75,7 +75,8 @@ public function removeproduct($id){
 {
     $user = Auth::user();
     $userid = $user->id;
-
+    $data['system'] = Systemsetting::find(1);
+    $_SESSION['setting'] = $data['system'];
     $data = Cart::where('user_id', '=', $userid)->get();
 
     foreach ($data as $data) {
@@ -163,6 +164,8 @@ public function removeproduct($id){
     public function cancel_order($id)
     {
         $order=Order::find($id);
+        $data['system'] = Systemsetting::find(1);
+        $_SESSION['setting'] = $data['system'];
         $order->delivery_status='You cancelled the order';
         $order->save();
         return redirect()->back();
